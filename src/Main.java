@@ -1,15 +1,3 @@
-import Intermediate.Intermediate_Lec_10_Modular_Arithmetic.DivisibilityBy8;
-import Intermediate.Intermediate_Lec_10_Modular_Arithmetic.ExcelColumnNumber;
-import Intermediate.Intermediate_Lec_10_Modular_Arithmetic.ModString;
-import Intermediate.Intermediate_Lec_10_Modular_Arithmetic.RepeatAndMissingNumberArray;
-import Intermediate.Intermediate_Lec_8_BitManipulation_1.*;
-import Intermediate.Intermediate_Lec_9_BitManipulation_2.HelpFromSam;
-import Intermediate.Intermediate_Lec_9_BitManipulation_2.SubArraysWithBitwiseOR1;
-import Intermediate.Intermediate_Lec_9_BitManipulation_2.TwoUniqueNumbersInArray;
-import Intermediate.Intermediate_lec_7_ArraysInterviewProblems.HollowStartPattern;
-
-import java.util.Arrays;
-
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
@@ -254,11 +242,15 @@ public class Main {
         modString.setA(A);
         modString.setB(B);
         System.out.println(modString.getAModB());
-*/
+
+        L10_Q6
         int[] A = {1,2,3,2,5};
         RepeatAndMissingNumberArray repeatAndMissingNumberArray = new RepeatAndMissingNumberArray();
         repeatAndMissingNumberArray.setA(A);
         System.out.println(Arrays.toString(repeatAndMissingNumberArray.getNumbers()));
+*/
+        OverlappingRectangles overlappingRectangles = new OverlappingRectangles(0,0,4,4,2,2,6,6);
+
 
 
 
