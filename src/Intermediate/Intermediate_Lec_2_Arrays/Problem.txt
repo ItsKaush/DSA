@@ -1,0 +1,25 @@
+Q1. Problem Description
+    Given an integer array A of size N and an integer B, you have to print the same array after rotating it B times towards the right.
+
+    Problem Constraints
+    1 <= N <= 10^6
+    1 <= A[i] <=10^8
+    1 <= B <= 10^9
+
+Q2. Problem Description
+    You are given an array of integers A of size N.
+    Return the difference between the maximum among all even numbers of A and the minimum among all odd numbers in A.
+
+    Problem Constraints
+    2 <= N <= 1e5
+    -1e9 <= A[i] <= 1e9
+    There is at least 1 odd and 1 even number in A
+
+***Q3. Problem Description
+    Given an array of integers A and multiple values in B, which represents the number of times array A needs to be left rotated.
+    Find the rotated array for each value and return the result in the from of a matrix where ith row represents the rotated array for the ith value in B.
+
+    Problem Constraints
+    1 <= length of both arrays <= 2000
+    -10^9 <= A[i] <= 10^9
+    0 <= B[i] <= 2000

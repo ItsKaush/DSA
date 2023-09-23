@@ -1,0 +1,12 @@
+Check ith bit is set:  n>>i & 1 == 1
+                       n & (i<i) != 0
+
+
+To set ith bit in a n -- n | (1<<i)
+To unset ith bit in a n -- n & ~(1<<i)
+
+To toggle ith bit in a n -- n ^ (1<<i)
+
+Unsigned and signed integers:
+    --> In signed integers, both -ve and +ve numbers are stored in the binary form. MSB contribution is always taken as -ve
+    --> In unsigned integers, the MSB is used to store the +ve numbers only.

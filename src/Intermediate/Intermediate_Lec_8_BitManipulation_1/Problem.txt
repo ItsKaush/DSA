@@ -1,0 +1,62 @@
+Q1. Given an array of integers A, every element appears twice except for one. Find that integer that occurs once.
+    NOTE: Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+
+    Problem Constraints
+    1 <= |A| <= 2000000
+    0 <= A[i] <= INT_MAX
+
+    Idea: take XOR on all the elements, it will give the element which is occurring only once.
+
+Q2. Given two binary strings A and B. Return their sum (also a binary string).
+
+    Problem Constraints
+    1 <= length of A <= 10^5
+    1 <= length of B <= 10^5
+    A and B are binary strings
+
+    Idea 1: start from the end of the string and add the digits, if the sum is greater than 1, then add 1 to the next sum.
+         TC: O(n^2) SC: O(n)
+         Need to solve this way only if the number is very large.
+
+    Idea 2: Convert both the binary string into decimal and add them and then convert the sum into binary string.
+            TC: O(n) SC: O(n)
+            Note: this approach will not work if the number is very large.
+
+Q3. Write a function that takes an integer and returns the number of 1 bits present in its binary representation.
+
+    Problem Constraints
+    1 <= A <= 10^9
+
+    eg. 11 Binary: 1 0 1 1 ans: 3
+
+    Idea 1: covert in Binary and then iterate and count the numbers of bit 1
+
+    Idea 2: use left shit operator, if num & 1 != 0 means that bit is 1, else that bit is 1
+
+    Idea 3: use right shift operator, keep taking right shift on number so the leftmost digits will be kept pushing at 0th bit and take and with 1 if it is one means
+    that bit is set
+
+Q4. You have an array A with N elements. We have two types of operation available on this array :
+    We can split an element B into two elements, C and D, such that B = C + D.
+    We can merge two elements, P and Q, to one element, R, such that R = P ^ Q i.e., XOR of P and Q.
+    You have to determine whether it is possible to convert array A to size 1, containing a single element equal to 0 after several splits and/or merge?
+
+    Problem Constraints
+    1 <= N <= 100000
+    1 <= A[i] <= 106
+
+    Idea 1: take xor of all elements that will convert into one element, then check if this element is even, if even then yes else not.
+
+Q5. Reverse the bits of an 32 bit unsigned integer A.
+
+    Problem Constraints
+    0 <= A <= 2^32
+
+    Idea 1: convert the number into Binary reverse the bits and then convert back to decimal
+        TC: O(N)
+
+    Idea 2: check if ith bit is set, then create a number and set its 32-ith bit.
+
+
+
+

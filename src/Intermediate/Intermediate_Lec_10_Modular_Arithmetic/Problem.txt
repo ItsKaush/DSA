@@ -1,0 +1,161 @@
+Q1. Given a column title as appears in an Excel sheet, return its corresponding column number.
+
+    Problem Constraints
+    1 <= length of the column title <= 5
+
+    Input Format: AB
+    A - 26 B 2 total 28
+    BB - 26*2 + 2 = 54
+    CD - 26*3 + 4 = 82
+    ABC- 26x26x1 + 26x2 + 3 = 731
+
+    Observation: Units place contribution 26^0
+                Tens place contribution 26^1
+                Hundreds place contribution 26^2
+
+    Idea: Iterate over string from right to left.
+          ith character contribution will be 26^i * (int value of char - 64)
+
+          eg: A D
+                i   ans = 26^0 + (68-64) = 4
+              i     ans = 26^1 + (65-64) = 26
+                    total = 30
+
+Q2. Problem Description
+    Given two integers A and B, find the greatest possible positive integer M, such that A % M = B % M.
+
+    Problem Constraints
+    1 <= A, B <= 109
+    A != B
+
+    Input Format: A = 5 B = 10
+    Output: 5
+
+    A= 7  B = 43 Ans = 6
+    A= 7  B = 65 Ans = 2
+
+    Observation: need to find the maximum M, then M will be  max - min
+
+Q3. You are given a number A in the form of a string. Check if the number is divisible by eight or not.
+    Return 1 if it is divisible by eight else, return 0.
+
+    Problem Constraints
+    1 <= length of the String <= 100000
+    '0' <= A[i] <= '9'
+
+    Input: 16  output: 1
+    Input: 123  output: 0
+    Input: 1248  output: 1
+    Input: 12576  output: 1
+    Input: 12574  output: 0
+    Input: 216 output: 1
+    Input:998 output: 1
+
+    Observation:
+    if last three digits are divisible by 8 then number is divisible by 8
+    Edge Case: if number is less than 8 then ans is 0
+
+Q4. You are given a large number in the form of a string A where each character denotes a digit of the number.
+    You are also given a number B. You have to find out the value of A % B and return it.
+
+    Problem Constraints
+    1 <= A.length() <= 10^5
+    0 <= Ai <= 9
+    1 <= B <= 10^9
+
+    Input: A = "143" B = "2" Output: 1
+    Input: A = "43535321" B = "47" Output: 20
+
+    Observation: answer will lie in between 0 to B-1
+                 But question is how to handle this large number A?
+                 We can't convert it into integer as it will overflow.
+                 So we will use the property of modulo operation
+                 (a+b)%m = (a%m + b%m)%m
+
+                 A = "143" B = "2"
+                 A = (100%2 + 40%2 + 3%2)%2
+                 A = (0 + 0 + 1)%2
+
+                 How to convert string to integer?
+
+    Idea: Iterate throgh string from left to right
+          ans = 0;
+          ans = ((ans*10)%B + (int)A[i]%B)%B
+
+Q5. You are given a read only array of n integers from 1 to n.
+    Each integer appears exactly once except A which appears twice and B which is missing.
+    Return A and B.
+
+    Note: Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+    Note that in your output A should precede B.
+
+    Input: [3 1 2 5 2] Output: [3, 4]
+         APSum : 1+2+3+4+5 = 15
+         ActualSum: 3+1+2+5+3 = 13
+
+         ActualSum = APSum + A - B
+         A - B = ActualSum - APSum ----(1)
+
+         Square Sum : 1^2 + 2^2 + 3^2 + 4^2 + 5^2 = 55
+         ActualSquareSum : 3^2 + 1^2 + 2^2 + 5^2 + 3^2 = 48
+
+         ActualSquareSum = SquareSum + A^2 - B^2
+         A^2 - B^2 = ActualSquareSum - SquareSum
+         (A+B)(A-B) = ActualSquareSum - SquareSum
+         A + B = (ActualSquareSum - SquareSum)/(A-B)  ----(2)
+
+         Use above 2 equation to get the value of A and B
+
+            A = ((ActSqrSum - RealSqrSum)/(ActSum-APSum)-(ActSum-ApSum))/2
+            B = A - ActualSum + APSum
+
+Q6. Given three 2-digit integers, A, B, and C, find out the minimum number obtained by concatenating them in any order.
+
+    Return the minimum result obtained.
+    Problem Constraints
+    10 <= A, B, C <= 99
+
+    eg: A= 10 B= 20 C=30
+
+    Observation: For number to be minimum highest number should be at units and 10s place, and smallest number should be at 10000s and 100000s place.
+                 start with finding the smallest, mid and largest number.
+                 and final number will be =  smallest*10000 + mid*100 + largest
+                                             10 * 10000 + 20*100 + 30
+                                             100000 + 2000 + 30
+                                             102030
+                 or directly concat the number as string and then parse it.
+
+Q7. Eight integers A, B, C, D, E, F, G, and H represent two rectangles in a 2D plane.
+    For the First rectangle,
+    Bottom left corner is (A, B)
+    Top right corner is (C, D)
+    For the Second rectangle,
+    Bottom left corner is (E, F)
+    Top right corner is (G, H).
+    Find and return whether the two rectangles overlap or not.
+
+    Observations: If any of the point of rectangle 2 lies inside the rectangle one then they will overlap
+                E>=A && E<=C && F>=B && F<=D
+                G>=A && G<=C && H>=B && H<=D
+
+
+
+
+
+    Observation. find min and max,
+                Iterate and find the repeated element. Brute force will give the TC of O(n^2).
+                Need to find in O(n) time complexity. So we will use the property of XOR operation.
+                We can use the property of AP sum to get the repeated element.
+
+
+
+
+
+
+
+
+
+
+
+
+

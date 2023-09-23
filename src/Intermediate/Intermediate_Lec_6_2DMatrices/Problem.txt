@@ -1,0 +1,94 @@
+Q1. Give a N * N square matrix A, return an array of its anti-diagonals. Look at the example for more details.
+
+    Problem Constraints
+    1<= N <= 1000
+    1<= A[i][j] <= 10^9
+                    i
+                0 1 2
+    eg. A:   0  1 2 3
+          j  1  4 5 6
+             2  7 8 9
+
+       ans: 1 0 0
+            2 4 0
+            3 5 7
+            6 8 0
+            9 0 0
+
+       observation:
+            1. row keeps increasing and col keeps decreasing
+             00
+             01  10
+             02  11  20
+             12  21
+             22
+
+            2. diagonals elements are starting from 0th row and the last column
+            3. iterate over 0th row and where row will keep decreasing and col will keep increasing so exit condition will be row >= 0 and col < n
+            4. iterate over last column and condition will be same.
+
+Q2. You are given a 2D integer matrix A, return a 1D integer array containing column-wise sums of original matrix.
+
+    Problem Constraints
+    1 <= A.size() <= 10^3
+    1 <= A[i].size() <= 10^3
+    1 <= A[i][j] <= 10^3
+
+    Iterate over each column and get the sum
+
+Q3. You are given two integer matrices A(having M X N size) and B(having N X P). You have to multiply matrix A with B and return the resultant matrix. (i.e. return the matrix AB).
+
+    Problem Constraints
+    1 <= M, N, P <= 100
+    -100 <= A[i][j], B[i][j] <= 100
+
+    eg. A: 1, 2
+           3, 4
+
+        B: 5, 6
+           7, 8
+
+        AB = 1*5 + 2*7   1*6 + 2*8
+             3*5 + 4*7   3*6 + 4*8
+
+             19   22
+             43   50
+
+        Observation:
+             1. iterate over first matrix rows and then iterate over second matrix columns and multiply each element and keep adding
+
+Q4. Transpose of a Matrix
+    eg. A:  1, 2, 3
+            4, 5, 6
+            7, 8, 9
+
+       ans: 1, 4, 7
+            2, 5, 6
+            3, 6, 9
+
+Q5. Given an integer A, generate a square matrix filled with elements from 1 to A2 in spiral order and return the generated square matrix.
+
+    Problem Constraints
+    1 <= A <= 1000
+
+    eg. Print in spiral way, like first iterate from start column to end column taking row as start row. once done increment start row.
+       iterate on start row to end row keeping last col constant and decrement last col
+       iterate on end col to start col keeping last row constant and decrement last row
+       iterate on last to start row keeping first col constant then increment start row.
+
+Q6. You are given a n x n 2D matrix A representing an image.
+    Rotate the image by 90 degrees (clockwise).
+    You need to do this in place.
+    Note: If you end up using an additional array, you will only receive partial score.
+
+    Problem Constraints
+    1 <= n <= 1000
+
+    Observation: fist create a transpose and then swap last col elements with first column elements
+
+Q7. You are given a 2D integer matrix A, make all the elements in a row or column zero if the A[i][j] = 0. Specifically, make entire ith row and jth column zero.
+
+    Problem Constraints
+    1 <= A.size() <= 103
+    1 <= A[i].size() <= 103
+    0 <= A[i][j] <= 103

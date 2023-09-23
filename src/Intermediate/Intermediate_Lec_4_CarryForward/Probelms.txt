@@ -1,0 +1,59 @@
+Q1. You have given a string A having Uppercase English letters.
+    You have to find how many times subsequence "AG" is there in the given string.
+    NOTE: Return the answer modulo 109 + 7 as the answer can be very large.
+
+    Problem Constraints
+    1 <= length(A) <= 10^5
+
+    e.g. A=  A B C G A G
+         Brute Force:-> iterate over string whenever found A iterate on right and find count of G. TC: N^2
+
+         A=  A B C G A G
+          G: 2 2 2 2 1 1
+         Ans 3 1 1 1 1 0
+
+             Iterate from right keep record of G whenever find A add count of G in ans.
+
+Q2. Given an array A, find the size of the smallest subarray such that it contains at least one occurrence of the maximum value of the array
+    and at least one occurrence of the minimum value of the array.
+
+    Problem Constraints
+    1 <= |A| <= 2000
+
+
+   Brute Force: find max and min of the array, then iterate over array and get their indexes and find the length.
+   ie. A: [2,6,1,6,9,1]  max = 9 min = 1
+                     i               min_index:5  max_index:4 ans = max_index-min_index + 1 = 2
+
+Q3. A wire connects N light bulbs.
+    Each bulb has a switch associated with it; however, due to faulty wiring, a switch also changes the state of all the bulbs to the right of the current bulb.
+    Given an initial state of all bulbs, find the minimum number of switches you have to press to turn on all the bulbs.
+    You can press the same switch multiple times.
+    Note: 0 represents the bulb is off and 1 represents the bulb is on.
+
+    ie. A: [0,1,0,1] state = 0 ans = 0
+            i        state = 1 ans = 1  1 0 1 0
+              i      state = 0 ans = 2  1 1 0 1
+                i    state = 1 ans = 3  1 1 1 0
+                  i  state = 0 ans = 4  1 1 1 1
+
+       A: [0,0,0,1,1,1,0] state = 0 ans  = 0  0 0 0 1 1 1 0
+           i              state = 1 ans = 1   1 1 1 0 0 0 1
+             i            state = 1 ans = 1   1 1 1 1 1 1 0
+               i          state = 1 ans = 1   1 1 1 1 1 1 1
+                 i        state = 0 ans = 2
+
+    Observation here is, when the switched has been pressed even no of times then state of right most bulbs are same as original and if the switched has been pressed
+    for odd numbers of times then state of right bulbs has been toggled.
+
+    so if count is even keep the state same as current bulb if count is odd toggle the state of current bulb and keep increasing the count if state of 0.
+
+Q4. Given an integer array A containing N distinct integers, you have to find all the leaders in array A. An element is a leader if it is strictly greater than all the elements to
+    its right side.
+    NOTE: The rightmost element is always a leader.
+
+    eg. A: [16,17,4,5,2]
+             3  3 2 2 1
+
+    idea: iterate from right and keep record of max and keep increasing ans whenever find max
+

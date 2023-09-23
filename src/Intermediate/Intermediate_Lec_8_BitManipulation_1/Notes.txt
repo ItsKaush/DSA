@@ -1,0 +1,74 @@
+Number System:
+    1. Decimal Number System: Base is 10. digits are 0-9.
+       eg: 132 = 1*10^2 + 3*10^1 + 2*10^0
+
+    2. Binary Number System: Base is 2. digits are 0-1.
+       eg: 101 = 1*2^2 + 0*2^1 + 1*2^0 = 5
+
+    3. Octal Number System: Base is 8. digits are 0-7.
+       eg: 132 = 1*8^2 + 3*8^1 + 2*8^0 = 90
+
+    4. Hexadecimal Number System: Base is 16. digits are 0-9 and A-F.
+        eg: 132 = 1*16^2 + 3*16^1 + 2*16^0 = 306
+
+
+Conversion of Decimal to Binary:
+    1. Divide the number by 2.
+    2. Get the integer quotient for the next iteration.
+    3. Get the remainder for the binary digit.
+    4. Repeat the steps until the quotient is equal to 0.
+    5. Concatenate the remainders from bottom to up.
+
+    eg: 132
+    132/2 = 66, remainder = 0
+    66/2 = 33, remainder = 0
+    33/2 = 16, remainder = 1
+    16/2 = 8, remainder = 0
+    8/2 = 4, remainder = 0
+    4/2 = 2, remainder = 0
+    2/2 = 1, remainder = 0
+    1/2 = 0, remainder = 1
+
+    So, 132 = 10000100
+
+Adding two Binary Numbers:
+    eg: 10110 = 22
+      + 00111 = 7
+      = 11101 = 29
+    Add the digits from right to left. if addition is greater than 1 divide by 2 and add the remainder to the next digit.
+
+BitWise Operator:
+    1. AND (&): 1 & 1 = 1, 1 & 0 = 0, 0 & 1 = 0, 0 & 0 = 0 [if both are 1 then only 1]
+    2. OR (|): 1 | 1 = 1, 1 | 0 = 1, 0 | 1 = 1, 0 | 0 = 0 [If any one is 1 then 1]
+    3. XOR (^): 1 ^ 1 = 0, 1 ^ 0 = 1, 0 ^ 1 = 1, 0 ^ 0 = 0 [If both are different then 1]
+    4. NOT (~): ~1 = 0, ~0 = 1 [Inverts all the bits]
+    5. Left Shift (<<): 1 << 2 = 100, 1 << 3 = 1000 [Shifts the bits to left]
+    6. Right Shift (>>): 100 >> 2 = 1, 1000 >> 3 = 1 [Shifts the bits to right]
+
+Properties of Bitwise Operators:
+    1. a & 1 = 0 [a is even]
+    2. a & 1 = 1 [a is odd]
+    3. a & 0 = 0
+    4. a & a = a
+    5. a | 0 = a
+    6. a | a = a
+    7. a ^ 0 = a
+    8. a ^ a = 0
+    9. a ^ 1 = a+1 [a is even]
+    10. a ^ 1 = a-1 [a is odd]
+    11. a | 1 = a+1 [if a is even]
+    12. a | 1 = a [if a is odd]
+
+    Left Shift Operator:
+        a << 1 = a*2
+        a << 2 = a*4
+        a << 3 = a*8
+        a << 4 = a*16
+        a << n = a*2^n
+
+    Right Shift Operator:
+        a >> 1 = a/2
+        a >> 2 = a/4
+        a >> 3 = a/8
+        a >> 4 = a/16
+        a >> n = a/2^n

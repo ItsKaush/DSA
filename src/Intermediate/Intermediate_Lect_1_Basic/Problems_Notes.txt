@@ -1,0 +1,37 @@
+# Range of number of factors of any number will be less than sqrt(number)
+
+
+Assignment
+Q1. Problem Description
+
+    Take an integer A as input, you have to tell whether it is a prime number or not.
+
+    A prime number is a natural number greater than 1 which is divisible only by 1 and itself.
+
+    Problem Constraints
+    1 <= A <= 10^6
+
+
+Q2. Problem Description
+    A perfect number is a positive integer that is equal to the sum of its proper positive divisors (excluding the number itself).
+    A positive proper divisor divides a number without leaving any remainder. CHeck if given number is perfect square or not?
+
+    Problem Constraints
+    1 <= N <= 10^6
+
+Q3. Problem Description
+
+    Given a number A. Return square root of the number if it is perfect square otherwise return -1.
+    Note: A number is a perfect square if its square root is an integer.
+
+    Problem Constraints
+    1 <= A <= 10^8
+
+Q4. You are given an integer N you need to print all the Armstrong Numbers between 1 to N. (N inclusive).
+    If sum of cubes of each digit of the number is equal to the number itself, then the number is called an Armstrong number.
+
+    For example, 153 = ( 1 * 1 * 1 ) + ( 5 * 5 * 5 ) + ( 3 * 3 * 3 ).
+    Note: All the test cases in this problem are limited to 3 digit numbers.
+
+    Problem Constraints
+    1 <= N <= 500
