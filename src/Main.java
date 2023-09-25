@@ -1,3 +1,5 @@
+import Intermediate.Intermediate_Lec_11_ArraysAndMaths.MajorityElement;
+
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
@@ -248,8 +250,16 @@ public class Main {
         RepeatAndMissingNumberArray repeatAndMissingNumberArray = new RepeatAndMissingNumberArray();
         repeatAndMissingNumberArray.setA(A);
         System.out.println(Arrays.toString(repeatAndMissingNumberArray.getNumbers()));
+
+        L10_Q7
+        OverlappingRectangles overlappingRectangles = new OverlappingRectangles(12,47,39,72,8,3,47,55);
+        System.out.println(overlappingRectangles.isRectanglesOverlapping());
 */
-        OverlappingRectangles overlappingRectangles = new OverlappingRectangles(0,0,4,4,2,2,6,6);
+        int[] A = {1,1,1};
+        MajorityElement majorityElement = new MajorityElement();
+        majorityElement.setA(A);
+        System.out.println(majorityElement.getMajorityElement());
+
 
 
 

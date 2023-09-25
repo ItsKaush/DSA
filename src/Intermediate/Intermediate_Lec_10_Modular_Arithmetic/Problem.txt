@@ -135,17 +135,31 @@ Q7. Eight integers A, B, C, D, E, F, G, and H represent two rectangles in a 2D p
     Find and return whether the two rectangles overlap or not.
 
     Observations: If any of the point of rectangle 2 lies inside the rectangle one then they will overlap
-                E>=A && E<=C && F>=B && F<=D
-                G>=A && G<=C && H>=B && H<=D
+                for this nee to check all 4 corners of rectangle.
+
+                if left bottom corner of rectangle 2 lies outside the right top corner of rectangle one then they will not overlap
+                if right top corner of rectangle 2 lies outside the left bottom corner of rectangle one then they will not overlap
+
+
+Q8. Write a program to input an integer T and then for each test case input two integers A and B in two different lines and then print T lines containing Least Common Multiple (LCM) of two given 2 numbers A and B.
+    Note: LCM of two integers is the smallest positive integer divisible by both.
+
+    Problem Constraints
+    1 <= T <= 1000
+    1 <= A,B <= 1000
+
+    eg. use gcd to find LCM
+        LCM = (A*B)/gcd(A,B)
+
+        Now GCD is the largest number which divides both A and B.
+        start with the smallest number and check if it divides both A and B.
+        if not keep decrementing it till you find the number which divides both A and B.
+
+        Or do it the conventional way by diving the larger number with smaller number till remainder becomes zero.
+        and swap min in larger and remainder in min for next set of operations
 
 
 
-
-
-    Observation. find min and max,
-                Iterate and find the repeated element. Brute force will give the TC of O(n^2).
-                Need to find in O(n) time complexity. So we will use the property of XOR operation.
-                We can use the property of AP sum to get the repeated element.
 
 
 

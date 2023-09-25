@@ -1,0 +1,18 @@
+Q1. Given an array of size N, find the majority element. The majority element is the element that appears more than floor(n/2) times.
+    You may assume that the array is non-empty and the majority element always exists in the array.
+
+    Problem Constraints
+    1 <= N <= 5*105
+    1 <= num[i] <= 109
+
+Brute fore TC will be max O(nlogn)
+Will use Moore's Voting Algorithm: if encountered same element then increase freq else decrease freq if freq becomes 0 then change the element
+
+Q2. You're given a read-only array of N integers. Find out if any integer occurs more than N/3 times in the array in linear time and constant additional space.
+    If so, return the integer. If not, return -1.
+    If there are multiple solutions, return any one.
+    Note: Read-only array means that the input array should not be modified in the process of solving the problem
+
+    Problem Constraints
+    1 <= N <= 7*105
+    1 <= A[i] <= 109

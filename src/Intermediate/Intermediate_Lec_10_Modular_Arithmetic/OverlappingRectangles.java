@@ -1,6 +1,6 @@
 package Intermediate.Intermediate_Lec_10_Modular_Arithmetic;
 
-public class OvrerlappingRectangles {
+public class OverlappingRectangles {
     private int A , B, C, D, E, F, G, H;
 
     public int getA() {
@@ -67,7 +67,7 @@ public class OvrerlappingRectangles {
         H = h;
     }
 
-    public OvrerlappingRectangles(int a, int b, int c, int d, int e, int f, int g, int h) {
+    public OverlappingRectangles(int a, int b, int c, int d, int e, int f, int g, int h) {
         A = a;
         B = b;
         C = c;
@@ -79,10 +79,8 @@ public class OvrerlappingRectangles {
     }
 
     public int isRectanglesOverlapping(){
-        if((E>=A && E<=C) || (G>=A && G<=C)){
-            if((F>=B && F<=D) || (H>=B && H<=D)){
-                return 1;
-            }
+        if(E>=C ||  F >= D || A >= G || B >= H){
+                return 0;
         }
         return 0;
     }
