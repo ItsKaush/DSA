@@ -1,4 +1,4 @@
-import Intermediate.Intermediate_Lec_11_ArraysAndMaths.MajorityElement;
+import Intermediate.Intermediate_Lec_11_ArraysAndMaths.MagicNumber;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -254,11 +254,25 @@ public class Main {
         L10_Q7
         OverlappingRectangles overlappingRectangles = new OverlappingRectangles(12,47,39,72,8,3,47,55);
         System.out.println(overlappingRectangles.isRectanglesOverlapping());
-*/
+
+        L11_Q1
         int[] A = {1,1,1};
         MajorityElement majorityElement = new MajorityElement();
         majorityElement.setA(A);
         System.out.println(majorityElement.getMajorityElement());
+
+        L11_Q2
+        int[] A = {1,2,3,4,5};
+        RepeatNumberNByThree repeatNumberNByThree = new RepeatNumberNByThree();
+        repeatNumberNByThree.setA(A);
+        System.out.println(repeatNumberNByThree.getMajorityElementII());
+*/
+        int n = 5000;
+        MagicNumber magicNumber = new MagicNumber();
+        magicNumber.setN(n);
+        System.out.println(magicNumber.getMagicNumber());
+
+
 
 
 

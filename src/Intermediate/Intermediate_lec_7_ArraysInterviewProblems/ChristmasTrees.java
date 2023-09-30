@@ -24,7 +24,7 @@ public class ChristmasTrees {
         int cost = Integer.MAX_VALUE;
         int n = B.length;
 
-        //Fix the current index of B, and iterate from 1 to n-2 as the no of tress to ne selected will be 3 , so one from left and one from right
+        //Fix the current index of B, and iterate from 1 to n-2 as the no of tress to be selected will be 3 , so one from left and one from right
         for(int i=1; i<n-1; i++){
             //find the minimum cost from left
             int minimum_cost_left = Integer.MAX_VALUE;
