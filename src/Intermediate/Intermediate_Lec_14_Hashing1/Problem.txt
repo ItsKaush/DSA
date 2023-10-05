@@ -1,0 +1,64 @@
+Q1. Given two integer arrays, A and B of size N and M, respectively. Your task is to find all the common elements in both the array.
+    NOTE:
+    Each element in the result should appear as many times as it appears in both arrays.
+    The result can be in any order.
+
+    Problem Constraints
+    1 <= N, M <= 10^5
+    1 <= A[i] <= 10^9
+
+    eg: A = [1, 2, 2, 1]
+        B = [2, 3, 1, 2]
+
+        ans = [1, 2, 2]
+
+    Observation: construct the freq map for each array.
+                 Iterate over array if it exists in both freq map then get the smaller frequency from both map and insert that key into ans array frequency times.
+
+                 TC: worst case can go upto O(N^2)
+
+                Or only construct the frequency map of first array, now iterate over second array and if second's element found in map and if its frequency is greater than
+                0 then reduce its frequency by 1 and add that element into ans array.
+
+                TC: O(N)
+
+Q2. Given an integer array A of size N, find the first repeating element in it.
+    We need to find the element that occurs more than once and whose index of the first occurrence is the smallest.
+    If there is no repeating element, return -1.
+
+    Problem Constraints
+    1 <= N <= 10^5
+    1 <= A[i] <= 10^9
+
+    eg:  A = [10, 5, 3, 4, 3, 5, 6]
+    output: 5 is the first element which is repeating;
+
+    Idea: create a frequency map and iterate over array and return first element whose frequency is repeating
+
+Q3. Given an array A of N integers.
+    Find the largest continuous sequence in a array which sums to zero.
+
+    Problem Constraints
+    1 <= N <= 10^6
+    -107 <= A[i] <= 10^7
+
+    eg: A = [1,2,-2,4,-4]
+    pfsum =  1, 2, 1, 5, 1
+            si
+
+    pfsum frequency 1 : 3
+                    2 : 1
+                    5 : 1
+
+    eg: A = 1, 2, -3, 3
+    pfsum = 1, 3, 0, 3
+
+    eg: -19, 8, 2, -8, 19, 5, -2, -23
+        -19,-11,-9,-15,4, 9, 7,-16
+
+    also if the any element in prefix sum is zero means that is also a candidate of answer.
+    will need to check the largest of both.
+    Iterate over pfsum frequency map, find the element whose frequency is max. get the index of that element from pfsum array.
+
+    Above approach is failing if the frequency of an element is greater than one and same, in that scenario will need to check for all
+    will need to check for other approach, where we can check teh frequency and find the indexes on the fly.

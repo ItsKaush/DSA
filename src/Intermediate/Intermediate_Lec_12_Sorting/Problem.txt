@@ -1,0 +1,100 @@
+Q1. Given an integer array A of size N. Return 1 if the array can be arranged to form an arithmetic progression, otherwise return 0.
+    A sequence of numbers is called an arithmetic progression if the difference between any two consecutive elements is the same.
+
+    Problem Constraints
+    2 <= N <= 10^5
+    -10^9 <= A[i] <= 10^9
+
+    eg: 3, 5, 1
+    Idea: sort the array and find the diff between first and second element
+          Iterate over array and check if difference between all the consecutive element is same
+
+          sAfter sorting: 1 3 5
+
+Q2. Problem Description
+    Given an integer array A, find if an integer p exists in the array such that the number of integers greater than p in the array equals p.
+
+    Problem Constraints
+    1 <= |A| <= 2*10^5
+    -10^8 <= A[i] <= 10^8
+                    0  1  2  3
+    eg:             3, 2, 1, 3
+    sort:           1, 2, 3, 3
+    greater ele:    1  2  0  0  n = 4 count = 0
+
+    Or iterate from right and keep the greater element count as same if its repeating
+
+Q3. Given an array with N objects colored red, white, or blue, sort them so that objects of the same color are adjacent, with the colors in the order red,
+    white, and blue.
+    We will represent the colors as,
+    red -> 0
+    white -> 1
+    blue -> 2
+
+    Note: Using the library sort function is not allowed.
+
+    Idea: iterate over array and keep the frequency of each ball. as they are only three hence can be done in on eiteration
+          then create a new array and add these elements into that array
+
+Q4. Given an integer array A of size N. You can remove any element from the array in one operation.
+    The cost of this operation is the sum of all elements in the array present before this operation.
+    Find the minimum cost to remove all elements from the array.
+
+    Problem Constraints
+    0 <= N <= 1000
+    1 <= A[i] <= 10^3
+
+    eg: 2, 1
+    cost of removing 2 = 2+1 = 3 Total cost 3
+    cost of removing 1 = 1
+    ans = 4
+
+    Observation: for minimum cost will need to remove the largest element first
+                 Sort the array in descending order
+                 At first cost will be total cost
+                 when removed update the cost by subtractine this element from teh cost
+
+Q5. Given an array A of non-negative integers, arrange them such that they form the largest number.
+    Note: The result may be very large, so you need to return a string instead of an integer.
+
+    Problem Constraints
+    1 <= len(A) <= 100000
+    0 <= A[i] <= 2*10^9
+
+    eg: 2, 3, 9, 0
+    ans : 9320
+
+    Observation: Largest element will be at first and
+
+
+    eg: 3, 30, 34, 5, 9
+        9  5   34  3  30
+    ans : 9534330
+    Observation: sort on the basis of left most digit first
+                 if there is a tie then sort on the basis of next digit
+                 and keep doing till all the numbers are sorted
+
+    To achieve the above solution will need to form a custom comparator, which will take two numbers x and y form a number by concatenating like xy or yx and
+    then comparing them and returning the desired result.
+
+    will need to use the sort function of the library and pass the custom comparator to it then concatenate all the numbers and return the result
+    pseduo code:
+    what comparator will return:
+        if xy > yx return 1
+        if xy < yx return -1
+        if xy == yx return 0
+
+    sort(A.begin(), A.end(), comparator)
+    comparator(int x, int y)
+        string xy = to_string(x) + to_string(y)
+        string yx = to_string(y) + to_string(x)
+        if xy > yx return 1
+        if xy < yx return -1
+        if xy == yx return 0
+
+    string ans = ""
+    for(int i = 0; i < A.size(); i++)
+        ans += to_string(A[i])
+    return ans
+
+

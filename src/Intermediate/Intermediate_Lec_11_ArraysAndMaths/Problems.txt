@@ -187,3 +187,131 @@ Q2. You're given a read-only array of N integers. Find out if any integer occurs
              = 755
 
            Idea: keep finding power of 2 less than N and keep subtracting it from N and keep adding power of 5 in ans
+
+Q6. A spider is trying to build a web for itself. The web built by it doubles every day.
+    If the spider entirely built the web in 15 days, how many days did it take for the spider to build 25% of the web?
+
+    on 15th daya web was 100% build
+    on 14th day it would have been 50% build
+    on 13th daya web would have been build 25%
+
+
+Q7. In a country where everyone wants a boy, each family continues having babies till they have a boy. After a long time, what is the proportion
+    of boys to girls in the country? (Assuming probability of having a boy or a girl is the same) > Round off your answer to two decimal places
+    and output the answer as I.xx where I is the integer part of your answer, and xx is the first two decimal places of the rounded-off answer.
+
+    Solution: probability of having a girl = 0.5
+              probability of having a boy = 0.5
+
+              consider the scenarios: As soon as boy is born they will stop
+              B
+              GB
+              GGB
+              GGGB
+              GGGGB
+              GGGGGG..........upto infinity B
+
+              Probability:
+              1/2
+              1/2*1/2 = 1/2^2
+              1/2*/1/2/1/2 = 1/2^3
+              .
+              .
+              1/2*1/2*1/2 ......upto infinity = 1/2 ^ infinity
+
+              Total = 1/2 + 1/2^2 + 1/2^3 + 1/2^5 + ........ infinity
+
+              series is GP: sum of infinite terms in GP
+                          :  a/(1-r)
+                          : 1/2/(1-1/2)
+                          :1/2/1/2
+                          : 1
+
+              probability of Boy = 1.00
+
+
+Q8. You have 20 blue balls and 14 red balls in a bag. You put your hand in and remove two at a time.
+    If they’re of the same color, you add a blue ball to the bag.
+    If they’re of different colors, you add a red ball to the bag.
+    Assume you have an enormous supply of blue & red balls for this purpose.
+
+    Note: When you take the two balls out, you don’t put them back in, so the number of balls in the bag keeps decreasing.
+
+    What will be the color of the last ball left in the bag?
+
+    Solution: Blue = 20     Red = 14
+    probability of removing two balls one from each= 1/20 * 1/14 = 1/280
+    probability of removing two balls of same colors= 2/20 + 2/14 = 1/10 + 1/7 = 17/70
+
+    Probability of adding a red ball = 17/140
+    Probability of adding a blue ball = 17/70
+
+    AS probability of adding blue is more than that of probability of adding red ball hence at end there will be blue.
+
+    In each iteration there can be below scenario:
+    1) i blue i red is drawn, 1 red added : overall effect 1 blue ball added
+    2) 2 blue is drawn, 1 blue added : overall effect 1 blue ball removed
+    3) 2 red balls drawn, i blue ball added : overall effect 2 red removed and 1 blue added
+
+    In 7 iterations there will be 1 red ball remain and 27 blue balls.
+    so now we will be left to pick different balls only hence the blue ball will be removed.
+    So at the end red ball will be left
+
+    IF the red balls are even then answer will be blue ball
+    else red
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

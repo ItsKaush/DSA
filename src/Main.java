@@ -1,4 +1,6 @@
-import Intermediate.Intermediate_Lec_11_ArraysAndMaths.MagicNumber;
+import Intermediate.Intermediate_Lec_14_Hashing1.LargestContinuousSequenceZeroSum;
+
+import java.util.Arrays;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -266,11 +268,110 @@ public class Main {
         RepeatNumberNByThree repeatNumberNByThree = new RepeatNumberNByThree();
         repeatNumberNByThree.setA(A);
         System.out.println(repeatNumberNByThree.getMajorityElementII());
-*/
+
+        L11_Q3
         int n = 5000;
         MagicNumber magicNumber = new MagicNumber();
         magicNumber.setN(n);
         System.out.println(magicNumber.getMagicNumber());
+
+
+        L12_Q1
+        int[] A = {3,1,7};
+        ArithmeticProgression arithmeticProgression = new ArithmeticProgression(A);
+        System.out.println(arithmeticProgression.isArithmetic());
+
+        L12_Q2
+        int[] A = {-4,7,5,3,5,-4,2,-1,-9,-8,-3,0,9,-7,-4,-10,-4,2,6,1,-2,-3,-1,-8,0,-8,-7,-3,5,-1,-8,-8,8,-1,-3,3,6,1,-8,-1,3,-9,9,-6,7,8,-6,5,0,3,-4,1,-10,6,3,-8,0,6,-9,-5,-5,-6,-3,6,-5,-4,-1,3,7,-6,5,-8,-5,4,-3,4,-6,-7,0,-3,-2,6,8,-2,-6,-7,1,4,9,2,-10,6,-2,9,2,-4,-4,4,9,5,0,4,8,-3,-9,7,-8,7,2,2,6,-9,-10,-4,-9,-5,-1,-6,9,-10,-1,1,7,7,1,-9,5,-1,-3,-3,6,7,3,-4,-5,-4,-7,9,-6,-2,1,2,-1,-7,9,0,-2,-2,5,-10,-1,6,-7,8,-5,-4,1,-9,5,9,-2,-6,-2,-9,0,3,-10,4,-6,-6,4,-3,6,-7,1,-3,-5,9,6,2,1,7,-2,5};
+        NobleInteger nobleInteger = new NobleInteger(A);
+        System.out.println(nobleInteger.isNoble());
+
+        L12_Q3
+        int[] A = {0};
+        SortByColor sortByColor = new SortByColor(A);
+        System.out.println(Arrays.toString(sortByColor.getSortedColors()));
+
+        L12_Q4
+        int[] A = {1,2,0,3};
+        ElementsRemoval elementsRemoval = new ElementsRemoval(A);
+        System.out.println(elementsRemoval.getMinimumCostOfRemoval());
+
+
+        L12_Q5
+        int[] A = {9,99,999,9999,9998};
+        LargestNumber largestNumber = new LargestNumber(A);
+        System.out.println(largestNumber.getLargestNumber());
+
+        L13_Q1
+        String A = "scaler";
+        SimpleReverse simpleReverse = new SimpleReverse(A);
+        System.out.println(simpleReverse.reverse());
+
+        L13_Q2
+        String A = "this  word";
+        ReverseTheString reverseTheString = new ReverseTheString(A);
+        System.out.println(reverseTheString.getReversedString());
+
+        L13_Q3
+        char[] A = {'a','#','A','0','Z','S'};
+        ConvertCase convertCase = new ConvertCase(A);
+        System.out.println(Arrays.toString(convertCase.to_Lower(A)));
+        System.out.println(Arrays.toString(convertCase.to_Upper(A)));
+        System.out.println(convertCase.isAlphanumeric(A));
+
+        L13_Q4
+        String A = "ABCGAG";
+        LongestPalindromicSubstring longestPalindromicSubstring = new LongestPalindromicSubstring(A);
+        System.out.println(longestPalindromicSubstring.getLongestPalindrome());
+
+
+        L13_Q5
+        String[] A = {"aaaaaaaaaaaaaaaaaaaaaaa","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "aaaaaaaaaaaaaaaaaaaaaaaaaa","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "aaaaaa","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","aaaaa",
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","aaaaaaaaaaaaaaaaaaaaaa","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"};
+        LongestCommonPrefix longestCommonPrefix = new LongestCommonPrefix(A);
+        System.out.println(longestCommonPrefix.getLongestCommonPrefix());
+
+        L13_Q6
+        String A = "abcabbccd";
+        int B = 3;
+        ChangeCharacter changeCharacter = new ChangeCharacter(A,B);
+        System.out.println(changeCharacter.getDistinctCharacters());
+
+        L13_Q7
+        int[] A={1, 2, 2, 1};
+        int[] B={2, 3, 1, 2};
+        CommonElements commonElements = new CommonElements(A,B);
+        System.out.println(Arrays.toString(commonElements.getCommonElements()));
+
+        L13_Q8
+        int[] A = {10, 4, 3, 5, 6};
+        FirstRepeatingElement firstRepeatingElement = new FirstRepeatingElement(A);
+        System.out.println(firstRepeatingElement.getFirstOccurringElement());
+
+
+*/
+        int[] A = {10,-3,-9,-10,9,-26,7,-2,-20,-19,-9,7,13,-5,-8,-24,-11,28,28,24};
+        LargestContinuousSequenceZeroSum largestContinuousSequenceZeroSum = new LargestContinuousSequenceZeroSum(A);
+        System.out.println(Arrays.toString(largestContinuousSequenceZeroSum.getLargestContinuousSequenceWithZeroSum()));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

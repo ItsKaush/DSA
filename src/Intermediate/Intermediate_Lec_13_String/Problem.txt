@@ -1,0 +1,156 @@
+Q1. Given a string A, you are asked to reverse the string and return the reversed string.
+
+    Problem Constraints
+    1 <= |A| <= 10^5
+    String A consist only of lowercase characters.
+
+    eg: s: "scaler"
+   output: "relacs"
+   Observation: use two pointer one from start and other from end, and keep them swapping
+    till they meet in the middle.
+
+    As we are storing the string new string hence, instead of swapoing we can just copy the characters from right.
+
+Q2. You are given a string A of size N.
+    Return the string A after reversing the string word by word.
+    NOTE:
+    A sequence of non-space characters constitutes a word.
+    Your reversed string should not contain leading or trailing spaces, even if it is present in the input string.
+    If there are multiple spaces between words, reduce them to a single space in the reversed string.
+
+    Problem Constraints
+    1 <= N <= 3 * 10^5
+
+    eg: A = "the sky is blue"
+    output: "blue is sky the"
+
+    Idea: reverse the complete string
+         l   r
+    A = "eulb si yks eht"
+
+    Now reverse the string till found the space ie. l to r-1
+    then update the l to r+1 and find the next space
+    keep doing till reached the end of string
+
+Q3. You are given a function to_lower() which takes a character array A as an argument.
+    Convert each character of A into lowercase characters if it exists. If the lowercase of a character does not exist, it remains unmodified.
+    The uppercase letters from A to Z are converted to lowercase letters from a to z respectively.
+
+    Return the lowercase version of the given character array.
+
+    Problem Constraints
+    1 <= |A| <= 10^5
+
+    eg: 'S', 'c', 'A', 'l', 'e', 'r', 'A', 'c', 'a', 'D', 'e', 'm', 'y'
+    output: s, c, a, l, e, r, a, c, a, 0, e, m, y
+
+    Observation: first need to check if the current character is in upper case, If it is upper case then convert it into lower case
+                if not move to the next character.
+
+                To check if it is upper case, if its ASCII value lies in between of A and Z
+                To convert into lower case, need to subtract the difference between upper case and lower case
+
+                ASCII valeu of A = 65
+                ASCII value of a = 97
+                difference = 97 - 65 = 32
+
+                So to convert lower case into upper case need to add 32 to the ASCII value of the character.
+
+    Dry run: S A a D
+    Asciii value of S = 83 + 32 = 115 = s
+    Asciii value of A = 65 + 32 = 97 = a
+    Asciii value of a = 97 = a
+    Asciii value of D = 68 + 32 = 100 = d
+
+Q4. Given a string A of size N, find and return the longest palindromic substring in A.
+    Substring of string A is A[i...j] where 0 <= i <= j < len(A)
+    Palindrome string:
+    A string which reads the same backwards. More formally, A is palindrome if reverse(A) = A.
+    Incase of conflict, return the substring which occurs first ( with the least starting index).
+
+    Problem Constraints
+    1 <= N <= 6000
+
+    eg: "aaaabaaa"
+    output: aaabaaa
+
+    Observation: fix the centre and iterate of left and right, if both are same then keep going untill they are different or reached the end
+               : In case of even length, there can be two centres, so fix both teh centres and keep iterating left and right
+
+    Pseudo Code:
+    for i in range(0, n):
+        l = i
+        r = i
+        while l >= 0 and r < n and A[l] == A[r]:
+            l -= 1
+            r += 1
+        if r - l - 1 > max_len:
+            max_len = r - l - 1
+            start = l + 1
+            end = r - 1
+
+        l = i
+        r = i + 1
+        while l >= 0 and r < n and A[l] == A[r]:
+            l -= 1
+            r += 1
+        if r - l - 1 > max_len:
+            max_len = r - l - 1
+            start = l + 1
+            end = r - 1
+
+
+Q5. Given the array of strings A, you need to find the longest string S, which is the prefix of ALL the strings in the array.
+    The longest common prefix for a pair of strings S1 and S2 is the longest string S which is the prefix of both S1 and S2.
+    Example: the longest common prefix of "abcdefgh" and "abcefgh" is "abc".
+
+    Problem Constraints
+    0 <= sum of length of all strings <= 1000000
+
+    eg: ["abcdefgh", "aefghijk", "abcefgh"]
+    output: "a"
+
+    Observation; iterate over string array.
+    for first string common prefix is the string itself
+    check if all the characters of this string is available in the next string in order, if found then update the common prefix
+    else remove the element from the common prefix and check again.
+
+    Pseudo Code:
+
+Q6. You are given a string A of size N consisting of lowercase alphabets.
+    You can change at most B characters in the given string to any other lowercase alphabet such that the number of distinct characters in the string is minimized.
+    Find the minimum number of distinct characters in the resulting string.
+
+    Problem Constraints
+    1 <= N <= 100000
+
+    eg : A = "abcabbccd"
+         B = 3
+
+         output: 2
+
+    Observation: need to change the char with less frequecy to the char with more frequency
+                so need to find the frequency of each char and sort them in ascending order
+                then start changing the char with less frequency to the char with more frequency
+                keep doing this till B becomes 0
+
+                : need a map to store the frequency of each char
+                map: a: 2
+                     b: 3
+                     c: 3
+                     d: 1
+
+                     ans = iterate in map remove element if its frequency is less than B and update B as B - frequency
+                          when B becomes zero answer will be the size of map
+
+    How will i get the char with less frequency?
+    need to sort the map based on the frequency of the char
+    is it possible to sort the map based on the frequency of the char?
+    No, as map is not a linear data structure, it is a non linear data structure
+
+    instead store the frequency in array, index will be the char-'a' and value will be the frequency
+    then sort the array based on the frequency of the char
+    then iterate over the array and keep changing the char with less frequency to the char with more frequency
+
+
+
