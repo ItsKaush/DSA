@@ -18,44 +18,34 @@ public class LargestContinuousSequenceZeroSum {
             prefix_sum[i] = prefix_sum[i-1] + A[i];
         }
 
-        //Create a frequency map of prefix sum
-        HashMap<Integer,Integer> prefix_sum_freq = new HashMap<>();
-        for (int num : prefix_sum){
-            if(prefix_sum_freq.containsKey(num)){
-                prefix_sum_freq.put(num, prefix_sum_freq.get(num) + 1);
-            }else {
-                prefix_sum_freq.put(num, 1);
-            }
-        }
-
-        //Get the key from map having max frequency
-        int element_with_max_freq = prefix_sum[0];
-        for (int num: prefix_sum_freq.keySet()){
-            if(prefix_sum_freq.get(num) > prefix_sum_freq.get(element_with_max_freq)){
-                element_with_max_freq = num;
-            }
-        }
-
-        //iterate over prefix sum array and get the index of this element
+        //Check for zero element case in prefix sum array
         int start_index = -1, end_index = -1;
+        int max_length = Integer.MIN_VALUE;
         for(int i=0; i<prefix_sum.length; i++){
-            if(prefix_sum[i] == element_with_max_freq){
-                if(start_index == -1){
-                    start_index = i;
-                }else {
-                    end_index = i;
-                }
+            if(prefix_sum[i] == 0 && i-start_index>max_length){
+                end_index = i;
+                max_length = end_index - start_index;
             }
         }
 
-        //Iterate over prefix sum array and check if its any on element is zero
-        int length = end_index - start_index ;
-        for(int i = 0; i<prefix_sum.length; i++){
-            if(prefix_sum[i] == 0 && i+1 > length){
-                start_index = -1;
-                end_index = i;
-                length = i + 1;
+        //Create a map and store the index of first occurrence, if this element is encountered again, check if length is greater than max length,
+        // if yes update the start index and end index and max length
+        HashMap<Integer,Integer> prefix_sum_index = new HashMap<>();
+        for (int i=0;  i<prefix_sum.length; i++){
+            if(prefix_sum_index.containsKey(prefix_sum[i])){
+                if(i - prefix_sum_index.get(prefix_sum[i]) > max_length){
+                    start_index = prefix_sum_index.get(prefix_sum[i]);
+                    end_index = i;
+                    max_length = end_index - start_index;
+                }
+            }else {
+                prefix_sum_index.put(prefix_sum[i], i);
             }
+        }
+
+        //If no such subarray exists then return empty array
+        if(end_index == -1){
+            return new int[] {};
         }
 
         System.out.println("PresumArray: " + Arrays.toString(prefix_sum));

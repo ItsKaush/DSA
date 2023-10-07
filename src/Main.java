@@ -1,4 +1,4 @@
-import Intermediate.Intermediate_Lec_14_Hashing1.LargestContinuousSequenceZeroSum;
+import Intermediate.Intermediate_Lec_15_Hashing2.TwoSum;
 
 import java.util.Arrays;
 
@@ -342,22 +342,81 @@ public class Main {
         ChangeCharacter changeCharacter = new ChangeCharacter(A,B);
         System.out.println(changeCharacter.getDistinctCharacters());
 
-        L13_Q7
+        L14_Q1
         int[] A={1, 2, 2, 1};
         int[] B={2, 3, 1, 2};
         CommonElements commonElements = new CommonElements(A,B);
         System.out.println(Arrays.toString(commonElements.getCommonElements()));
 
-        L13_Q8
+        L14_Q2
         int[] A = {10, 4, 3, 5, 6};
         FirstRepeatingElement firstRepeatingElement = new FirstRepeatingElement(A);
         System.out.println(firstRepeatingElement.getFirstOccurringElement());
 
-
-*/
+        L14_Q3
         int[] A = {10,-3,-9,-10,9,-26,7,-2,-20,-19,-9,7,13,-5,-8,-24,-11,28,28,24};
         LargestContinuousSequenceZeroSum largestContinuousSequenceZeroSum = new LargestContinuousSequenceZeroSum(A);
         System.out.println(Arrays.toString(largestContinuousSequenceZeroSum.getLargestContinuousSequenceWithZeroSum()));
+
+        L14_Q4
+        int[] A = {1,2,3,4,5};
+        SubArrayWithZeroSum subArrayWithZeroSum = new SubArrayWithZeroSum(A);
+        System.out.println(subArrayWithZeroSum.isSUbArrayWithZeroSumPresent());
+
+        L14_Q5
+        int[] A = {7, 1, 3, 4, 1, 7};
+        ShaggyAndDistance shaggyAndDistance = new ShaggyAndDistance(A);
+        System.out.println(shaggyAndDistance.getMinimumDistanceBetweenRepeatingElements());
+
+        L14_Q6
+        int A = 3;
+        int B = 2;
+        int[] C = {0,0,2};
+        KOccurrence kOccurrence = new KOccurrence(A,B,C);
+        System.out.println(kOccurrence.getSumOfElementsWithBOccurrence());
+
+        L14_Q7
+        String A = "aacceeec";
+        CheckPalindromeII checkPalindromeII = new CheckPalindromeII(A);
+        System.out.println(checkPalindromeII.isPalindromePossible());
+
+        L14_Q8
+        int A = 23;
+        ColorfulNumber colorfulNumber = new ColorfulNumber(A);
+        System.out.println(colorfulNumber.isColorful());
+
+        L15_Q1
+        int[] A = {1,2,3,4,5};
+        int B = 6;
+        SubarrayWithGivenSum subarrayWithGivenSum = new SubarrayWithGivenSum(A,B);
+        System.out.println(Arrays.toString(subarrayWithGivenSum.findSubarrayWithGivenSum()));
+
+        L15_Q2
+        int[] A = {1,5,3};
+        int B = 3;
+        DiffkII diffkII = new DiffkII(A,B);
+        System.out.println(diffkII.isDiffPossible());
+
+        L15_Q3
+        int[] A = {1,2,3,2,4,5};
+        int B = 3;
+        DistinctNumberInWindow distinctNumberInWindow = new DistinctNumberInWindow(A,B);
+        System.out.println(Arrays.toString(distinctNumberInWindow.getDistinctElementsInWindow()));
+        
+*/
+        int[] A = {2,7,11,15};
+        int B = 9;
+        TwoSum twoSum = new TwoSum(A,B);
+        System.out.println(Arrays.toString(twoSum.getIndexesTwoSum()));
+
+
+
+
+
+
+
+
+
 
 
 

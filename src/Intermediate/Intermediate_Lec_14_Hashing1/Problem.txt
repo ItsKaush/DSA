@@ -43,7 +43,7 @@ Q3. Given an array A of N integers.
     -107 <= A[i] <= 10^7
 
     eg: A = [1,2,-2,4,-4]
-    pfsum =  1, 2, 1, 5, 1
+    pfsum =  1,3, 1,5, 1
             si
 
     pfsum frequency 1 : 3
@@ -54,11 +54,142 @@ Q3. Given an array A of N integers.
     pfsum = 1, 3, 0, 3
 
     eg: -19, 8, 2, -8, 19, 5, -2, -23
-        -19,-11,-9,-15,4, 9, 7,-16
+    pf  -19,-11,-9,-17,2, 7, 5,-18
 
-    also if the any element in prefix sum is zero means that is also a candidate of answer.
-    will need to check the largest of both.
-    Iterate over pfsum frequency map, find the element whose frequency is max. get the index of that element from pfsum array.
+    Idea2: while creating the freq hashmap, at the time of increasing frequency only check the length between the indexes and store the max length.
+           Also store the element with max length . for this instead of creating freq map will need to store the index of first occurrence only.
 
-    Above approach is failing if the frequency of an element is greater than one and same, in that scenario will need to check for all
-    will need to check for other approach, where we can check teh frequency and find the indexes on the fly.
+           max length will be current index - index stored in map
+
+           Another case will be if any of the element is 0 in prefix sum array
+
+Q4. Given an array of integers A, find and return whether the given array contains a non-empty subarray with a sum equal to 0.
+    If the given array contains a sub-array with sum zero return 1, else return 0.
+
+    Problem Constraints
+    1 <= |A| <= 100000
+    -10^9 <= A[i] <= 10^9
+
+    eg:  1, 2, 3, 4, 5
+    psum 1, 3, 6, 10,15
+    output : 0
+
+    Observation: if any of the element in pf sum array is zero means it has subarray which sums up to give zero
+                 if any of the element is repeating in prefix sum array means it has subarray with sum equals zero
+
+Q5. Shaggy has an array A consisting of N elements. We call a pair of distinct indices in that array a special if elements at those indices in the array are equal.
+    Shaggy wants you to find a special pair such that the distance between that pair is minimum. Distance between two indices is defined as |i-j|.
+    If there is no special pair in the array, then return -1.
+
+    Problem Constraints
+    1 <= |A| <= 10^5
+
+    Idea: store the index of first occurrence of each element in map, if any element encountered again then store the minimum distance between them
+
+Q6. Groot has N trees lined up in front of him where the height of the i'th tree is denoted by H[i].
+    He wants to select some trees to replace his broken branches.
+    But he wants uniformity in his selection of trees.
+    So he picks only those trees whose heights have frequency B.
+    He then sums up the heights that occur B times. (He adds the height only once to the sum and not B times).
+    But the sum he ended up getting was huge so he prints it modulo 10^9+7.
+    In case no such cluster exists, Groot becomes sad and prints -1.
+    Constraints:
+
+    1.   1<=N<=100000
+    2.   1<=B<=N
+    3.   0<=H[i]<=10^9
+
+    Input: Integers N and B and an array C of size
+    Output: Sum of all numbers in the array that occur exactly B times.
+
+    eg; input: N=5 ,B=2 ,C=[1 2 2 3 3]
+        output = 5
+        explanation: 2 and 3 has frequency 2 hence ans = 2 + 3
+
+        Observation:  create frequency map O(N)
+                       iterate over array and check in map if its frequency is B then add it in answer, if no element has frequency B then print -1
+
+
+Q7. Given a string A consisting of lowercase characters.
+    Check if characters of the given string can be rearranged to form a palindrome.
+    Return 1 if it is possible to rearrange the characters of the string A such that it becomes a palindrome else return 0.
+
+    Problem Constraints
+    1 <= |A| <= 10^5
+    A consists only of lower-case characters.
+
+    eg; input = "abcde"
+        freq : a : 1
+               b : 1
+               c : 1
+               d : 1
+               e : 1
+        output = 0
+
+        input = "abbaee"
+        freq : a = 2
+               b = 2
+               e = 2
+        output = 1
+
+        input = "abbaeeccca"
+        freq : a = 2
+               b = 2
+               c = 3
+               e = 2
+        output =  ebacccabe
+
+
+        Observation:
+            string has to be palindrome, only if all of its elements frequency is even when its length is even
+            If it is central element then only its frequency will be odd, when length of string is odd
+            If more than one element has frequency odd then it will not be palindrome
+
+
+Q8. Given a number A, find if it is COLORFUL number or not.
+    If number A is a COLORFUL number return 1 else, return 0.
+    What is a COLORFUL Number:
+    A number can be broken into different consecutive sequence of digits.
+    The number 3245 can be broken into sequences like 3, 2, 4, 5, 32, 24, 45, 324, 245 and 3245.
+    This number is a COLORFUL number, since the product of every consecutive sequence of digits is different
+
+    Problem Constraints
+    1 <= A <= 2 * 109
+
+    eg: input = 236
+    possible subsequence : 2    3   6   23  36  236
+                           2    3   6    6  18  36
+
+                           all products are different hence it is colorful number
+
+    Observation:
+        Generate all the subsequence/subarrays and get their products store in hashset
+        if length of hashset is equals no of subarrays (n * (n+1)/2) then answer will be yes
+        else no.
+
+        TC, n = 10, to generate subaaray and get product of all digits 0(N^3) but as n is small hence it can be done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
