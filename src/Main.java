@@ -1,6 +1,4 @@
-import Intermediate.Intermediate_Lec_15_Hashing2.TwoSum;
-
-import java.util.Arrays;
+import Intermediate.Intermediate_Lec_15_Hashing2.SudokuValidator;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -402,12 +400,33 @@ public class Main {
         int B = 3;
         DistinctNumberInWindow distinctNumberInWindow = new DistinctNumberInWindow(A,B);
         System.out.println(Arrays.toString(distinctNumberInWindow.getDistinctElementsInWindow()));
-        
-*/
+
+        L15_Q4
         int[] A = {2,7,11,15};
         int B = 9;
         TwoSum twoSum = new TwoSum(A,B);
         System.out.println(Arrays.toString(twoSum.getIndexesTwoSum()));
+
+        L15_Q5
+        String[] A = {"hello", "scaler", "interviewbit"};
+        String B = "adhbcfegskjlponmirqtxwuvzy";
+        ISDictionary isDictionary = new ISDictionary(A,B);
+        System.out.println(isDictionary.isDictionary());
+
+        L15_Q6
+        int[] A = {3, 6, 8, 10, 15, 50};
+        int B = 5;
+        PairsWithGivenXor pairsWithGivenXor = new PairsWithGivenXor(A,B);
+        System.out.println(pairsWithGivenXor.getPairsCountWithXorB());
+        
+*/
+
+        String[] A = {"53..7....", "6..195...", ".98....6.", "8...6...3", "4..8.3..1", "7...2...6", ".6....28.", "...419..5", "....8..79"};
+        SudokuValidator sudokuValidator = new SudokuValidator(A);
+        System.out.println(sudokuValidator.isSudokuValid());
+
+
+
 
 
 

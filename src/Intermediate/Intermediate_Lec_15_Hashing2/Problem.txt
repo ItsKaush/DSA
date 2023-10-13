@@ -84,5 +84,81 @@ Q4. Given an array of integers, find two numbers such that they add up to a spec
           else
             store the list of index in hashmap and from hashmap only get the index
 
+    Issue with above approach is it will give the numbers on the basis of minimum first index. Whereas we need to get the on the basis of second index first.
+    if b exists in map then check for the first index.
+    so create a hashmap on the basis of index, if element exists then current index will become the second index and find the first index from the hashmap.
+    if element already in hashmap then continue else add the element along with its frequency.
+
+    eg : [9,-8,-10,-7,7,-8,2,-7,4,7,0,-3]  B=0
+          i                                a=9  b=-9
+            i                              a=-8 b=8
+                i                          a=-10 b=10
+                   i                       a=-7 b=7
+                      i                    a=7 b=-7 second index= 4 first index= 3
+    index_map= 9 - 0
+               8 - 1
+               -10 - 2
+               -7 - 3
+
+Q5. Surprisingly, in an alien language, they also use English lowercase letters, but possibly in a different order. The order of the alphabet is some permutation of lowercase letters.
+    Given an array of words A of size N written in the alien language, and the order of the alphabet denoted by string B of size 26, return 1 if and only if the
+     given words are sorted lexicographically in this alien language else, return 0.
+
+    Problem Constraints
+    1 <= N, length of each word <= 10^5
+    Sum of the length of all words <= 2 * 10^6
+
+    eg:  A = ["hello", "scaler", "interviewbit"]  B = "adhbcfegskjlponmirqtxwuvzy"
+
+    Idea: create a hashmap of all chars in B with their index
+    iterate on words and take the first char in each word
+    and compare their index with previous one.
+
+    if the current index is same then will compare the next index char
+
+Q6. Given an integer array A containing N distinct integers.
+    Find the number of unique pairs of integers in the array whose XOR is equal to B.
+    NOTE:
+    Pair (a, b) and (b, a) is considered to be the same and should be counted once.
+
+    Problem Constraints
+    1 <= N <= 10^5
+    1 <= A[i], B <= 10^7
+
+    eg:  A = [5, 4, 10, 15, 7, 6]  B = 5
+
+    if A xor B = C
+    then A xor C = B
+
+    above property can be used to solve same as two sum
+    store the elements in hashmap check if b = B xor A[i] present in map, if present then increase the count.
+    To tackle the duplicate pairs, whenever found a b in map remove it from the map
+
+Q7. Valid Sudoku: Determine if a Sudoku is valid, according to: http://sudoku.com.au/TheRules.aspx
+                  The Sudoku board could be partially filled, where empty cells are filled with the character '.'.
+
+    Rules: 1. Valid if no number is repeating in a row
+           2. Valid if no number is repeating in a column
+           3. Valid if no number is repeating in a 3*3 sub matrix
+
+    Idea: Use hashset and as key use row or col or grid number its value and number
+          So for any row if number is releating then it will duplicate. and return 0 and same for rest of both
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
