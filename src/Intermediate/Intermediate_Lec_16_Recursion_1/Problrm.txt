@@ -1,0 +1,91 @@
+Q1. Problem Description
+    Write a recursive function that checks whether string A is a palindrome or Not.
+    Return 1 if the string A is a palindrome, else return 0.
+    Note: A palindrome is a string that's the same when read forward and backward.
+
+    Problem Constraints
+    1 <= |A| <= 50000
+    String A consists only of lowercase letters.
+
+    eg: A = "naman"
+        Yes
+        B: "strings"
+        no
+
+    check first and last element if they are same then check for first+1 and last-1
+    Keep doing it recursively till first is less than last
+
+    i=0 j=n
+    if(i==j){
+    return 1;
+    }
+
+    if(A[i] == A[j]){
+        call func(i+1, j-1)
+    }else{
+    return 0;
+    }
+
+Q2. The Fibonacci numbers are the numbers in the following integer sequence.
+    0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ……..
+    In mathematical terms, the sequence Fn of Fibonacci numbers is defined by the recurrence relation:
+    Fn = Fn-1 + Fn-2
+    Given a number A, find and return the Ath Fibonacci Number using recursion.
+    Given that F0 = 0 and F1 = 1.
+
+    Problem Constraints
+    0 <= A <= 20
+
+    eg: A = 2
+    0 1 1 ANs =1
+
+    A = 9
+    0 1 1 2 3 5 8 13 21 34
+
+    ith number will be sum of i-1 and i-2
+
+    if ( i == 0) {
+    return 0;
+    }
+    if( i == 1){
+    return 1;
+    }
+
+    int asn = fun(i-1) + fun(i-2);
+
+    return ans;
+
+Q3. Write a program to find the factorial of the given number A using recursion.
+    Note: The factorial of a number N is defined as the product of the numbers from 1 to N.
+
+    Problem Constraints
+    0 <= A <= 12
+
+    eg: A = 4
+    4 * 3 * 2 * 1 = 24
+
+    fac(i) = i * fac(i-1)
+    base case: i == 0 return 1 and i==1 return 1
+
+Q4. Write a recursive function that takes a string, S, as input and prints the characters of S in reverse order.
+
+    Problem Constraints
+    1 <= |s| <= 1000
+
+    eg: cool
+    output = looc
+
+Q5. Given a number A, we need to find the sum of its digits using recursion.
+
+    Problem Constraints
+    1 <= A <= 10^9
+
+    eg: 46
+    output = 10
+
+    get the current digit and add it with the func of sum of rest of number
+    current digit = num % 10
+    number = num / 10
+
+    A = 321
+

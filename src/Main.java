@@ -1,4 +1,5 @@
-import Intermediate.Intermediate_Lec_15_Hashing2.SudokuValidator;
+import Intermediate.Intermediate_Lec_19_Stack.ArrayListImpl;
+import Intermediate.Intermediate_Lec_19_Stack.Stack;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -418,12 +419,89 @@ public class Main {
         int B = 5;
         PairsWithGivenXor pairsWithGivenXor = new PairsWithGivenXor(A,B);
         System.out.println(pairsWithGivenXor.getPairsCountWithXorB());
-        
-*/
 
+        L15_Q7
         String[] A = {"53..7....", "6..195...", ".98....6.", "8...6...3", "4..8.3..1", "7...2...6", ".6....28.", "...419..5", "....8..79"};
         SudokuValidator sudokuValidator = new SudokuValidator(A);
         System.out.println(sudokuValidator.isSudokuValid());
+
+        L16_Q1
+        String A = "n";
+        CheckPalindrome checkPalindrome = new CheckPalindrome(A);
+        System.out.println(checkPalindrome.isPalindromeMain());
+
+        L16_Q2
+        int A = 9;
+        FindFibonacciII findFibonacciII = new FindFibonacciII(A);
+        System.out.println(findFibonacciII.getIthNumberInFibonacci(A));
+
+        L16_Q3
+        int A = 4;
+        FindFactorial findFactorial = new FindFactorial(A);
+        System.out.println(findFactorial.getFactorial(A));
+
+        L16_Q4
+        int A = 321;
+        SumOfDigits sumOfDigits = new SumOfDigits(A);
+        System.out.println(sumOfDigits.getSum(A));
+
+        L17_Q1
+        int A = -2;
+        int B = 3;
+        int C = 3;
+        ImplementPowerFunction powerFunction = new ImplementPowerFunction(A,B,C);
+        System.out.println(powerFunction.powerFunction());
+
+        L17_Q2
+        int A = 83557;
+        IsMagic magic = new IsMagic(A);
+        System.out.println(magic.magic(A));
+
+        L17_Q3
+        int A = 9;
+        int B = 175;
+        KthSymbol kthSymbol = new KthSymbol(A,B);
+        System.out.println(kthSymbol.getKthSymbol(A,B));
+
+        L18_Q1
+        LinkedList linkedList = new LinkedList();
+        linkedList.insert_node(1,2);
+        linkedList.insert_node(2,4);
+        linkedList.insert_node(3,6);
+        linkedList.insert_node(2,3);
+        linkedList.insert_node(3,7);
+        linkedList.insert_node(5,8);
+        linkedList.insert_node(4,5);
+        linkedList.insert_node(7,3);
+        linkedList.print_ll();
+        linkedList.delete_node(1);
+        linkedList.delete_node(1);
+        linkedList.delete_node(5);
+        linkedList.delete_node(2);
+        System.out.println();
+        linkedList.print_ll();
+
+
+*/
+        Stack stack = new ArrayListImpl();
+        stack.add(2);
+        stack.add(3);
+        stack.add(7);
+        System.out.println(stack.isEmpty());
+        System.out.println(stack.size());
+        System.out.println( stack.top());
+        stack.pop();
+        System.out.println(stack.top());
+
+
+
+
+
+
+
+
+
+
 
 
 

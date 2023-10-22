@@ -1,0 +1,99 @@
+Q1. Implement pow(A, B) % C.
+    In other words, given A, B and C, Find (A^B % C).
+    Note: The remainders on division cannot be negative. In other words, make sure the answer you return is non-negative.
+
+    Problem Constraints
+    -10^9 <= A <= 10^9
+    0 <= B <= 10^9
+    1 <= C <= 10^9
+
+    eg: A = 2
+        B = 3
+        C = 3
+
+        2^3 = 8 % 3 = 2
+
+    find the power:
+    if(B == 0){
+    return 1;
+    }
+
+    return A * fun(A, B-1)
+
+    for fast computation
+    pow = pow(A, B)
+    if(B is even){
+    return (pow%C * pow%C)%C;
+    }
+    else{
+    return (A * pow%C * pow%C) %C
+    }
+
+Q2. Given a number A, check if it is a magic number or not.
+    A number is said to be a magic number if the sum of its digits is calculated till a single digit recursively by adding the sum of the digits after every addition.
+    If the single digit comes out to be 1, then the number is a magic number.
+
+    Problem Constraints
+    1 <= A <= 10^9
+
+    eg : A = 1291
+    A = 1 + 2 + 9 + 1 = 13
+    A = 4
+    Ans = 0;
+
+    Idea: can find the sum of digits of original number
+    run a while loop till number is greater than 9
+
+
+Q3. On the first row, we write a 0. Now in every subsequent row, we look at the previous row and replace each occurrence of 0 with 01, and each occurrence of 1 with 10.
+    Given row number A and index B, return the Bth indexed symbol in row A. (The values of B are 1-indexed.).
+
+    Problem Constraints
+    1 <= A <= 20
+    1 <= B <= 2A - 1
+
+    eg: A = 2, B = 2
+
+      1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+    1 0
+    2 0 1
+    3 0 1 1 0
+    4 0 1 1 0 1 0 0 1
+    5 0 1 1 0 1 0 0 1 1  0  0  1  0  1  1  0
+
+    Observation: for ith index children are 2i-1 and 2i and if it is even then its value is reversed if odd then its value is same as parent
+    for ith index its parent is i/2 or i+1/2
+    i.e. index  child  values
+          1->0   1  2   0   1
+          2->1   3  4   1   0
+          3->1   5  6   1   0
+          4->0   7  8   0   1
+
+    Recursive: if the target is know, we can trace back to the parent, and find its value from above observation using the parent data
+
+    BaseCase:
+    if(A == 1){
+    return 0
+    }
+    if B is even then prent data is
+    parent data = func(A-1, B/2)
+    if B is odd then parent is
+    parent data = func(A-1, (B+1)/2)
+    if(B is even){
+    return i-parent data
+    }else{
+    return parent data
+    }
+
+Q4. The gray code is a binary numeral system where two successive values differ in only one bit.
+    Given a non-negative integer A representing the total number of bits in the code, print the sequence of gray code.
+    A gray code sequence must begin with 0.
+
+    Problem Constraints
+    1 <= A <= 16
+
+    eg: 2
+    output: 00
+            01
+            11
+            10
