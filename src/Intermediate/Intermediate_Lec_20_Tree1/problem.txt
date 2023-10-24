@@ -1,0 +1,63 @@
+Notes:
+
+height of tree = 1 + max(left subtree height, right subtree height)
+depth of node = 1 + depth of parent node
+
+PreOrderTraversal = root data, left, right
+InOrderTraversal = left, root data, right
+PostOrderTraversal = left, right, root data
+
+Q1. Given a binary tree, return the preorder traversal of its nodes values.
+
+    Problem Constraints
+    1 <= number of nodes <= 10^5
+
+Q2. Given the root of a tree A with each node having a certain value, find the count of nodes with more value than all its ancestors.
+    Ancestor means that every node that occurs before the current node in the path from root to the node.
+
+    Problem Constraints
+    1 <= Number of Nodes <= 200000
+    1 <= Value of Nodes <= 2000000000
+
+                4
+            5       2
+                  3   6
+
+    if left data is greater than root node (max so far) then increase ans and update max so far
+    if right data is greater than root node (max so far) then increase ans and update max so far
+
+    but will create issue when the tree branches as the max so far will impact the other branch as well
+
+    Idea:  store the max at each node and then compare the node data with the max at that node
+
+Q3. Given a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
+
+    Problem Constraints
+    1 <= number of nodes <= 10^5
+
+    eg: 1 2 2 3 4 4 3
+    Idea: Given two trees, left data of first node should be equal to right data of second node and vice versa
+
+    Time Complexity: O(n)
+    Space Complexity: O(n)
+
+Q4. Given a binary search tree of integers. You are given a range B and C.
+    Return the count of the number of nodes that lie in the given range.
+
+    Problem Constraints
+    1 <= Number of nodes in binary tree <= 100000
+    0 <= B < = C <= 10^9
+
+    Idea. If current node is less than lower limit then go to right subtree
+          If current node is greater than upper limit then go to left subtree
+          If current node is in range then go to both left and right subtree
+
+Q5. Given a Binary Tree A containing N nodes, you need to find the path from Root to a given node B.
+    NOTE:
+    No two nodes in the tree have the same data values.
+    You can assume that B is present in tree A and a path always exists.
+
+    Problem Constraints
+    1 <= N <= 10^5
+    1 <= Data Values of Each Node <= N
+    1 <= B <= N
