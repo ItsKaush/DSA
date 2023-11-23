@@ -61,3 +61,42 @@ Q5. Given a Binary Tree A containing N nodes, you need to find the path from Roo
     1 <= N <= 10^5
     1 <= Data Values of Each Node <= N
     1 <= B <= N
+
+    Idea: for each node check for its child, if child is found then add it to the path and return true
+          if child is not found then remove the node from the path and return false
+
+          eg:  1
+
+           2       3
+
+        4    5  6    7
+
+     8   9 10 11 12 13 14 15
+
+        path = [1, 2, 5]
+
+        Observation. for each node its parent is either node / 2 or (node - 1) / 2
+        eg: 5's parent is 2
+            5 / 2 = 2
+            (5 - 1) / 2 = 2
+            2/2 = 1
+
+            If even divide by 2 else subtract 1 and then divide by 2
+            add to path and return true
+            and at end reverse the path and return it
+
+        Pseudo Code:
+        if(val == root.data){
+            path.add(val);
+            return;
+        }
+
+        if(val % 2 == 0){
+            path.add(val);
+            findPath(val / 2);
+        }else{
+            path.add(val);
+            findPath((val - 1) / 2);
+        }
+
+

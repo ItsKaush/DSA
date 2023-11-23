@@ -1,0 +1,192 @@
+Q1. Given an integer array find the max value of f(i,j) ,
+    where f(i,j) = |(A[i] - A[j])| * |(i-j)|
+
+    eg: A = [1, 3,-2]
+             0  1  2
+
+    i   ||   j   ||   f(i,j)
+    _________________________________
+    0   ||   0   ||   |1-1|+|0-0| = 0
+    0   ||   1   ||   |1-3|+|0-1| = 3
+    0   ||   2   ||   |1-(-2)|+|0-2| = 5
+    1   ||   0   ||   |3-1|+|1-0| = 3
+    1   ||   1   ||   |3-3|+|1-1| = 0
+    1   ||   2   ||   |3-(-2)|+|1-2| = 6
+    2   ||   0   ||   |-2-1|+|2-0| = 5
+    2   ||   1   ||   |-2-3|+|2-1| = 6
+    2   ||   2   ||   |-2-(-2)|+|2-2| = 0
+
+    Observation: f(i,j) == f(j,i),only need to compute for half of the array (i>j)
+
+    Brute force: two iteration fix i and j and compute f(i,j) for all i,j
+
+    Optimized:
+    f(i, j) = |A[i] - A[j]| + (i-j) for i>j
+
+    when (A[i]-A[j]) > 0
+    f(i, j) = A[i] - A[j] + (i-j)
+            = (A[i] + i) - (A[j] + j)
+            = max(A[i] + i) - min(A[j] + j)
+            = max(Xi) - min(Xj) where Xi = A[i] + i and Xj = A[j] + j
+
+    when (A[i]-A[j]) < 0
+    f(i, j) = -(A[i] - A[j]) + (i-j)
+            = -A[i] +  A[j] + i - j
+            = A[j] - j - A[i] + i
+            = (A[j] - j) - (A[i] - i)
+            = max(Yj) - min(Yi) where Yi = A[i] - i and Yj = A[j] - j
+
+Idea: 1. find the max, min of first ie. Xi and Xj and their difference
+      2. find the max, min of second ie. Yi and Yj and their difference
+        3. return the max of the two differences
+
+Q2. Find the maximum sum of contiguous non-empty subarray within an array A of length N.
+
+    Problem Constraints
+    1 <= N <= 1e6
+    -1000 <= A[i] <= 1000
+
+    eg: A = [1, 2, 3, 4, -10]
+    output = 10
+
+    Idea: generate all subarrays and find the max sum TC`O(n^2)
+
+    Optimization: Kadane's Algorithm: TC`O(n)
+    Algo: when ever sum becomes negative, reset it to 0, and for each index keep track of max sum so far
+
+    Psuedo code:
+    max_so_far = 0
+    max_ending_here = 0
+    for i in range(0, n):
+        max_ending_here = max_ending_here + a[i]
+        if max_ending_here < 0:
+            max_ending_here = 0
+        if max_so_far < max_ending_here:
+            max_so_far = max_ending_here
+    return max_so_far
+
+Q3. There are A beggars sitting in a row outside a temple. Each beggar initially has an empty pot. When the devotees come to the temple, they donate some amount of coins to
+these beggars. Each devotee gives a fixed amount of coin(according to their faith and ability) to some K beggars sitting next to each other.
+
+    Given the amount P donated by each devotee to the beggars ranging from L to R index, where 1 <= L <= R <= A, find out the final amount of money in each beggar's pot at the
+    end of the day, provided they don't fill their pots by any other means.
+    For ith devotee B[i][0] = L, B[i][1] = R, B[i][2] = P, given by the 2D array B
+
+    Problem Constraints
+    1 <= A <= 2 * 10^5
+    1 <= L <= R <= A
+    1 <= P <= 10^3
+    0 <= len(B) <= 10^5
+
+    eg: A = 5, B = [[1, 2, 10], [2, 3, 20], [2, 5, 25]]
+    output = [10, 55, 45, 25, 25]
+
+    number of beggars = 5
+
+    beggars = 1  2  3  4  5
+    devotee1= 10 10
+    devotee2=    20 20
+    devotee3=    25 25 25 25
+
+    total =  10 55  45 25 25
+
+    Observations:
+        1. number of beggars is = max of A[i][2]
+
+    Brute force: find the max number of beggars, iterate over 2D array's rows, find the l --> A[i][0] and r --> A[i][i], iterate in range l to r and add amount --> A[i][2]
+    to each beggar.
+    TC`O(n^2)
+
+    Optimization:
+        1. create and empty array of size equals numbers of beggars
+        2. Iterate over 2D array and add the amount to beggars left index and subtract the amount from beggar right index + 1
+        3. at end find the prefix sum and return the array
+
+    TC`O(n).
+
+    Dry run.
+              0  1   2   3   4
+    beggars = 0  0   0   0   0
+
+    beggar =  10 45 -10 -20
+
+    ans =     10 55 45  25  25  (prefix sum of above array)
+
+Q4. Given a non-negative number represented as an array of digits, add 1 to the number ( increment the number represented by the digits ).
+    The digits are stored such that the most significant digit is at the head of the list.
+    NOTE: Certain things are intentionally left unclear in this question which you should practice asking the interviewer. For example: for this problem,
+    the following are some good questions to ask :
+
+    Q: Can the input have 0's before the most significant digit. Or, in other words, is 0 1 2 3 a valid input?
+    A: For the purpose of this question, YES
+    Q: Can the output have 0's before the most significant digit? Or, in other words, is 0 1 2 4 a valid output?
+    A: For the purpose of this question, NO. Even if the input has zeroes before the most significant digit.
+
+    Problem Constraints
+    1 <= size of the array <= 1000000
+
+    eg: A = [0, 1, 9, 9]
+    output = [2,0,0]
+
+    Idea: iterate from right and add 1 to the last digit, if it is 9 then make it 0 and carry 1 to the next left digit, if the first digit is 9 then make it 0 and add 1 to the
+    left of the array
+
+    But iteratively adding it will become difficult, in worst case will need to add 1 to all the elements, if all are 9
+
+    instead of adding 1 to all the elements, we can add 1 to the last digit and check if it is 9, if it is 9 then make it 0 and carry 1 to the next left digit, if the first
+
+    TC`O(n)
+
+Q5. You are given an array A of integers of size N.
+    Your task is to find the equilibrium index of the given array
+    The equilibrium index of an array is an index such that the sum of elements at lower indexes is equal to the sum of elements at higher indexes.
+    If there are no elements that are at lower indexes or at higher indexes, then the corresponding sum of elements is considered as 0.
+    Note:
+
+    Array indexing starts from 0.
+    If there is no equilibrium index then return -1.
+    If there are more than one equilibrium indexes then return the minimum index.
+
+    Problem Constraints
+    1 <= N <= 10^5
+    -105 <= A[i] <= 10^5
+
+    eg: A = [-7, 1, 5, 2, -4, 3, 0]
+    suffixSum = [0,   7,  6, 1, -1, 3, 0]
+    Prefixsum = [-7, -6, -1, 1, -3, 0, 3]
+
+    equilibrium index is the index for which suffix sum and prefix sum are equal
+
+Q6. Given 4 array of integers A, B, C and D of same size, find and return the maximum value of
+    | A [ i ] - A [ j ] | + | B [ i ] - B [ j ] | + | C [ i ] - C [ j ] | + | D [ i ] - D [ j ] | + | i - j| where i != j and |x| denotes the absolute value of x.
+
+
+    Problem Constraints
+    2 <= length of the array A, B, C, D <= 100000
+    -106 <= A[i] <= 106
+
+   |A[i] - A[j]| + |B[i] - B[j]| +|i - j|
+
+   if A[i]-A[j] > 0 and B[i] - B[j] > 0
+    then f(i, j) = (A[i] - A[j]) + (B[i] - B[j]) + (i - j)
+                = (A[i] + B[i] + i) - (A[j] + B[j] + j)
+                = max(Xi) - min(Xj) where Xi = A[i] + B[i] + i and Xj = A[j] + B[j] + j
+
+    if A[i] - A[j] < 0 and B[i] - B[j] > 0
+    then f(i, j) = A[j] - A[i] + B[i] - B[j] + i - j
+                 = (A[j] -B[j] - j) - (A[i] - B[i] - i) max of this
+
+
+    So there will be total 16 cases for 4 matrices after changing the signs. So need to change the sigh of matricess elements while finding max and min which can be
+    done using binary
+
+
+
+
+
+
+
+
+
+
+

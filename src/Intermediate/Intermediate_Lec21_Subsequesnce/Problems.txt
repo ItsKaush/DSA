@@ -1,0 +1,247 @@
+Q1. Little Ponny has been given a string A, and he wants to find out the lexicographically minimum subsequence from it of size >= 2. Can you help him?
+    A string a is lexicographically smaller than string b, if the first different letter in a and b is smaller in a. For example, "abc" is lexicographically smaller than "acc"
+    because the first different letter is 'b' and 'c' which is smaller in "abc".
+
+    Problem Constraints
+    1 <= |A| <= 10^5
+    A only contains lowercase alphabets.
+
+    eg: a = "abc"
+    output = "ab"
+
+   A = "abcdsfhjagj"
+   output = "aa"
+
+    A = "ksdjgha"
+     output = "da"
+
+     Iterate over String and find the smallest character and its index
+     then iterate right to index and find the smallest character
+
+Q2. You are given an array of integers A of size N.
+    The value of a subarray is defined as BITWISE OR of all elements in it.
+    Return the sum of value of all sub arrays of A % 10^9 + 7.
+
+    Problem Constraints
+    1 <= N <= 10^5
+    1 <= A[i] <= 10^8
+
+    find the OR of all element for each subarray
+    then add them together
+
+    Brute force: generate all sub arrays and find OR of each subarray then add them together
+    TC: O(N^2)
+    SC: O(1)
+
+    Optimization: contribution technique.
+
+    eg: A = [1,2,3,4,5]
+    All subArrays:
+    1         = 1                          = 001
+    1,2       = 1 | 2 = 3                  = 011
+    1,2,3     = 1 | 2 | 3 = 3              = 011
+    1,2,3,4   = 1 OR 2 OR 3 OR 4 = 7       = 111
+    1,2,3,4,5 = 1 OR 2 OR 3 OR 4 OR 5 = 7  = 111
+    2         = 2                          = 010
+    2,3       = 2 OR 3 = 3                 = 011
+    2,3,4     = 2 OR 3 OR 4 = 7            = 111
+    2,3,4,5   = 2 OR 3 OR 4 OR 5 = 7       = 111
+    3         = 3                          = 011
+    3,4       = 3 OR 4 = 7                 = 111
+    3,4,5     = 3 OR 4 OR 5 = 7            = 111
+    4         = 4                          = 100
+    4,5       = 4 OR 5 = 5                 = 101
+    5         = 5                          = 101
+    Sum =    1 + 3 + 3 + 7 + 7 + 2 + 3 + 7 + 7 + 3 + 7 + 7 + 4 + 5 + 5 = 71
+    sum = 2^0 * (15-2) + 2^1 * (15-4) + 2^2 * (15-6) = 1*13 + 2*11 + 4*9 = 13 + 22 + 36 = 71
+
+    1 = 001
+    2 = 010
+    3 = 011
+    4 = 100
+    5 = 101
+
+Observation:
+
+count the number of set bits in each position for all the elements in array.
+for each position if there are k consecutive unset bits then the no of subarrays contributing  at that position is (total no of sub arrays - k*(k+1)/2)
+keep adding it in answer.
+
+Q3. Given a set of distinct integers A, return all possible subsets.
+
+    NOTE:
+    Elements in a subset must be in non-descending order.
+    The solution set must not contain duplicate subsets.
+    Also, the subsets should be sorted in ascending ( lexicographic ) order.
+    The initial list is not necessarily sorted.
+
+    Problem Constraints
+    1 <= |A| <= 16
+    INTMIN <= A[i] <= INTMAX
+
+    eg: A = [1,2,3]
+    output = [[],[1],[1, 2],[1, 2, 3],[1, 3],[2],[2, 3],[3]]
+
+    Idea: sort the array, then find all the subsets of the array
+    TC: O(2^N)
+
+    Observation: Number of subsets are = 2^N
+    for each element we have 2 choices either to include it or not
+
+        0 1 2
+        1 2 3
+     0  0 0 0    {}
+     1  0 0 1    {1}
+     2  0 1 0    {2}
+     3  0 1 1    {1, 2}
+     4  1 0 0    {3}
+     5  1 0 1    {1, 3}
+     6  1 1 0    {2, 3}
+     7  1 1 1    {1, 2, 3}
+
+     for each subset if its ith bit is set then include that element in subset.
+     TC: O(2^N * N)
+
+Q4. Given an array of integers A of size, N. Find the longest subsequence of A, which is odd-even.
+
+    A subsequence is said to be odd-even in the following cases:
+    The first element of the subsequence is odd; the second element is even, the third element is odd, and so on. For example: [5, 10, 5, 2, 1, 4], [1, 2, 3, 4, 5]
+    The first element of the subsequence is even, the second element is odd, the third element is even, and so on. For example: [10, 5, 2, 1, 4, 7], [10, 1, 2, 3, 4]
+    Return the maximum possible length of odd-even subsequence.
+    Note: An array B is a subsequence of an array A if B can be obtained from A by deleting several (possibly, zero, or all) elements.
+
+    Constraints:
+    1 <= N <= 100000
+    1 <= A[i] <= 10^9
+
+    eg: A = [1, 2, 2, 5, 6]
+    output = [1, 2, 5, 6] ans = 4
+
+    Idea: Iterate over array and keep count of distinct even and odd elements.
+
+    eg: A= [2, 2, 1, 5, 6]
+    output = [2, 1, 5, 6] ans = 4
+
+    eg: A = [2, 2, 2, 5, 6]
+    output = [2, 5, 6] ans = 3
+
+    eg: A = [1, 2, 2, 2, 5, 6]
+    output = [1, 2, 5, 6] ans = 4
+
+    eg: A = [1, 2, 2, 2, 3, 4, 5, 5, 6]
+
+    Observation: Store the previous element type odd or even, if current element is of different type then increase the count.
+
+Q5. You have given a string A having Uppercase English letters.
+    You have to find how many times subsequence "AG" is there in the given string.
+    NOTE: Return the answer modulo 109 + 7 as the answer can be very large.
+
+    Problem Constraints
+    1 <= length(A) <= 10^5
+
+    eg: A = "ABCGAG"
+    output = 3
+
+    Brute force: generate all subsequence and count the number of times AG is present in it.
+    Or iterate over array and check if current character is A then iterate right and check if current character is G. Whenever found G increase the count.
+
+    TC: O(N^2) TLE
+
+    Optimization: use carry forward.
+    iterate from right
+
+    eg: A = "A B C G A G"
+                       i   ans = 0, count_g = 1
+                     i     ans = 1, count_g = 1
+                   i       ans = 1, count_g = 2
+                 i         ans = 1, count_g = 2
+               i           ans = 1, count_g = 2
+             i             ans = 3, count_g = 2
+
+    Iterate fom right, keep record og count of G's found so far. when ever find A then add count of G's found so far in answer.
+
+Q6. Given two strings A and B, find if A is a subsequence of B.
+    Return "YES" if A is a subsequence of B, else return "NO".
+
+    Constraints:
+    1 <= lenght(A), length(B) <= 100000
+    'a' <= A[i], B[i] <= 'z'
+
+    eg: A = "abc"
+        B = "ahbgdc"
+        output = "YES"
+
+        Idea; iterate over first string, for each element check if it is present in second string. if present then move to next element. and in second string
+        move to next element from the index where first string element is found. and if all the elements are there in second string then return "YES" else "NO"
+
+        1. Traverse both A and B from left to right. If we find a matching character, we move ahead in both strings. Otherwise, we move ahead only in B.
+        2. if A finishes first, return "YES"
+        3. Else return "NO"
+
+        TC: O(N*M)
+
+        Dry Run:
+        A = a b i                               B = a h b g d c
+            i      n = 3                            j              m = 6
+              i    n = 2                              j            m = 5
+              i    n = 2                                j          m = 4
+                i  n = 1                                   j       m = 3
+                i  n = 1                                     j     m = 2
+                i  n = 1                                       j   m = 1
+                i  n = 1                                         j m = 0
+
+Q7. You are given an array of integers A of N size.
+    You have to find that there is any subsequence exists or not whose sum is equal to B.
+    Note: A subsequence is a sequence that can be derived from the given array by deleting zero or more elements without changing the order of the remaining elements.
+
+    Problem Constraints
+    1 <= N <= 20
+    1 <= A[i] <= 100000
+    0 <= B <= 109
+
+Q8. Given an integer array, A of size N.
+    You have to find all possible non-empty subsequences of the array of numbers and then,
+    for each subsequence, find the difference between the largest and smallest number in that subsequence.
+    Then add up all the differences to get the number.
+
+    As the number may be large, output the number modulo 1e9 + 7 (1000000007).
+
+    NOTE: Subsequence can be non-contiguous.
+
+    Problem Constraints
+    1 <= N <= 10000
+
+    1<= A[i] <=1000
+
+    eg: 3, 5, 10
+    3       max = 3, min 3 diff = 0 ans = 0
+    3, 5    max = 5, min 3 diff = 2 ans = 2
+    3, 10   max = 10, min 3 diff = 7 ans = 9
+    3, 5, 10 max = 10, min 3 diff = 7 ans = 16
+    5       max = 5, min 5 diff = 0 ans = 16
+    5, 10   max = 10, min 5 diff = 5 ans = 21
+    10      max = 10, min 10 diff = 0 ans = 21
+
+    Idea; generate all the susets, for each subset find diff and add to the answer
+
+    Note: due to the problem constrain, need to use contribution technique.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+    
