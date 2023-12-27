@@ -1,0 +1,370 @@
+OOPs:
+
+1. Different prgramming paradigms:
+	a. Declarative - HTML
+	b. Procedural - C
+	c. Object Oriented - C++, C, Java, Pythong, Java Script
+	d. Functional - Haskell, Scala, Java Script
+	e. Reactive - Java
+
+Procedural languages:
+	Program is divided into procedures/methods/functions.
+	All functions can call each other.
+	A special function to start the program.
+
+	Problems:
+		-> Not natural way of expressing logic(focus on verb first noun later)
+		-> Lack of modurality(well defined segregated codes),Any function can call another function which can lead to data inconsistency.
+				Task can't be assigned to a multimember team efficiently.
+				Task cant be broken into seperate independent tasks.
+				Code base becomes unreadable like book without chapters.
+			Proper modularity will make sure, data of a module is available only to the module, any other module can get that data by making a call
+			to method inside first module.
+		-> don't allow to create seperate & independent modules because all data can be accessed by all methods.
+
+
+2. Object Oriented Programming Language:
+	1. Encapsulation:
+		Set of methods and the data they work on encapsulated inside a class and keep it safe from outside world. If any class of outside worlds needs to access that data then they can access via methods inside the first class.
+		Encapsulate all the codes related to a module and keep that safe from outside environment.
+		Classes are a way to encapsulate the attributes and behaviour or groups of related data and methods.
+		Helps in creating seperate modules.
+
+		Helps in maintaining modularity which leads to data consistency and enable to assign the task in different members of team.
+
+	2. Abstraction:
+		To use a thing one need not know how it works instead how to use it and this is achieved by emphasizing essential features while hiding unneccessary details.
+
+
+Class: Blueprint to construct a programm.
+Object: Instance that we create from the class, which contains all the attribute and behaviour of that class.
+
+
+	Whenever a method is called on object reference, one argument is always passed "this(current class object)".
+
+Whenever their is a collision between local variable and instance variable then local variable will have preference over instance variable,
+if there is no collision between local and instance variable then java will try to find the variable on stack if not found then it will go and check
+on heap for instance variable.
+
+eg. class demo{
+		int name;
+		public void sayHello(String name){
+		sout(this.name + "sAYs hello to " + name);
+
+		psvm(String[] args){
+		demo demo = new demo();
+		demo.name = "Class Variable";
+		demo.sayHello("Local Variable");
+		}
+	}
+
+	O/P : class variable says hello to Local variable.
+
+Data Types: 1. Val Types
+			2. Ref Types
+
+	1. Val Type: 8 primitive types -> byte, short, int, long, long, double, boolean, char. These value types are stored on stack
+	2. Ref Type: Everything except primitive is ref type. They are stored in heap inside instance and their reference on stack.
+
+Functions calls:
+Call by value and call by reference:
+	1. value type call by value. --> Everything happens on stack because there is no ref hence no instance is created and no heap area is used
+	2. value type call by ref. --> in this stack value address are passed which is not supported in java because this needs pointers.
+	3. ref type call by value. --> in this instances are stored on heap and reference are pass to the method variable, so instead of swapping the value it swaps the reference leading to swapping the values inside instance in heap.
+	when the method is called, in that case method call recieves the value from stack(object reference) which stores the address of instance inside the heap, hence it basically swaps the values inside the heap (object data).
+	4. ref type call by reference.
+
+
+	    p1=add_p1                            p1.x = 10-> 20
+		p2=add_p2  							 p2.x = 20-> 10
+
+		swap p1= add_p1
+		     p2= addp2
+			 t = add_p1 --> this swap will only happen on the references of original instance inside the stack when swap method is called so the original heap instances will remain same, their value will not get swapeed.
+
+Constructors:
+		Special functions inside the class which is used to initialized the data members while crating object:
+		Their name should be same as class.
+		They can not return anything
+
+	Constructor Telescoping:
+		One constructor calling the other construction.
+		point(int x, int y){
+			this.x = x;
+			this.y = y;
+		}
+		point(){
+			this(0, 0) // This keyword will call the other constructor
+		}
+
+	Copy Constructor:
+		Shallow Copy - Only copies the reference, where if the original object changes this new object will also get affected, basically it is tightly bound to the original object
+		Deep Copy - here it creates the new object using the existing object references.
+
+	Basically inside the copy constructor if we are only copying the reference of existing object then it will be shalow copy because new object will  will point to the existing object by storing their references. If we create a new object inside the copy constructor while copying the reference then it will be deep copy as it will copy the values of existing object and create a new instance.
+
+Static method takes everything they work on, in the parameter.
+
+Method overloading: Same method but different signature.
+Method signature is method name + ordered list of parameter data type.
+It is called at compile time, because compiler decides which method to call. And this is encountered by developers.
+eg: Arrays.sort-> can sort integers as well as String char.
+
+JVM : software which runs the java byte code or compiled java program. It contain class loaders, Garbage Collector
+JRE : JVM + Libraries, which helps jvm execute the java programme.
+JDK : JRE + Utility Kits like Java Compiler, help developer developes the java application.
+
+
+Method overriding:
+ 1. Object of parent in ref of parent: can only access the parent data members and call its own methods.
+ 2. Object of child in ref of parent:  Can access the data members of parent class only and call the methods of child class overriden method and all the parent class methods. If we need to access the data members and methods of child class then need to typecast the parent reference to child class.
+ 3. Object of child in ref of child: All the data members and methods can be accessed.
+ 4. Object of Parent in ref of child: not allowed in java. If it was allowed, then the code can fail at runtime, because in the reference, parent object will be stored, which do not have data members of child.
+
+ Rules for inheritence and run tyme polymorphism:
+		1. Compiler watches LHS ie. reference. Compiler makes compile time decision. Reference decides compile time decision.
+		2. JRE watches RHS ie. instance. JRE makes runtime decision.
+		3. In case of conflict or ambiguity JRE breaks the conflict on the basis of reference.
+Parent references can recieve child instances but not the other way around(child references can not recieve parent class instances)
+In Method Overriding method is called on the basis of objects, so if the child method is overriding the parent method and child instance is stored inside the parent reference, the child method will be called. If the child method is not overriding the parent method then the call to method goes to the parent method.
+
+Data members are accessed on the basis of reference, so if the reference does not contain the data member of child then it will not compile, to do so we need to tyecast the referenct to the child class.
+
+Methods are accessed on the basis of instance so first jvm checks for method inside the instance, if not found look for the method inside the parent.
+
+Static methods can be overloaded, but can not be overriden
+
+In Constructor chaining root class constructor finish first and instance class constructor will be called first. It is achieved via super keyword.
+
+-------------Interfaces And Abstract Classes-------------------------
+
+Interfaces:
+	They are same like classes, but they creates the contract of function. Classess which will implements this interface are bound to provide their own implementation to the methods provided by interfaces.
+
+	Interfaces only provide method signature and return type not the body. basically only define/declare the functions does not provide the implementation.
+
+	Interfaces helps implementing loose coupling and devide work with confidence.
+	If there is a one class object in aother class then it is tight coupling.
+
+	This can also be done using inheritence but that will lead to class explosion.
+
+Comparable: interface which has a single method compareTo. Class whose obhects need to be sorted should implements Comparable interface and override the method compare To.
+	In Arrays.sort comparison of objects are not done using less than or greater than operator, instead it has been done by using cmpare to method after typecasting the objects to comparable, compareTo Method accepts an object and return integer.
+	Inside compareTo, needs to return an integer which will be the difference between this and other depending upon the sorting requirement, this-other will sort in asc where as other - this will sort in desc order.
+
+
+Comparator: interface which has method compare. Need to create a new class implementing Comparator and override the method compare. It is more flexible where objects can be sorted on the basis of multiple attributes.
+
+Q. Can We create instance of Interface?
+Ans. We can not create object/Instance of Interface.
+
+Q. Can Interafces have constructors?
+Ans. No, Because it downot have any object.
+
+Q. Can Interfaces have data members?
+Ans. Yes. But they are by default final and static so they can used as constants only.
+
+Q. Access modifier of interface methods?
+Ans. public by default.
+
+Q. Can interfaces have multiple inheritence?
+Ans. Yes. using interfaces we can achieve multiple inheritence.
+
+Abstract classes:
+	Which has data members and some methods with body as well as abstract methods.
+
+	An object can not be created of a abstract class.
+	If an abstract method is inside a class then the class also must be abstract.
+	If a class does not have abstract method then this class can be abstract.
+
+Interfaces can have method body after java 8. Because if Afetr implementation of interfaces and classes, if someone needs to add a new method inside the interafce then all the other classes needs to be changed other wise code will not compile, hence to achieve this, method body was allowed but with default access modifier.
+
+
+
+Iterable:
+
+
+Iterator:
+
+--------------------MULTITHREADING---------------------
+
+Process: A program which is executing is called process. Program lives in the hard disc, Process lives in the ram.
+		Program is inactive, process is active.
+
+RAM Of Machine Area:
+	PCB (Program control block) -- details of a process, Copy of Registers
+	PAS (Process Address Space) -- contain code of the process, Heap area and stack area
+	PPT (Process Paging Table)
+
+CPU Core: contains small memory called registers, and contains 20 to 40 registers of 4 to 8 bytes depending upon the registers.
+	Important register is Program Counter: contains the address of next instruction the cpu is going to execute.
+
+	If the processor clock speed it 3 GHZ then it can perform 3*10^9 instructions per second.
+	So if the multiple processes are executing on machine then cpu is performing the instructions from each process one after another, and it is happening so fast that user feels that all the processes are happening simultaneously.
+
+Context Switch: 1. send value of register from CPU to PCB of currently executing process.
+				2. Fetch the value of registers from pCB of second process which needs to be executed next.
+				3. once it is done then again the value of register is being send to the copy of register in Program control block.
+
+
+Threads: In the same process there can be multiple task which can be executing in parallel, so each task is completed by a different thread.
+		CPU executes a thread instead of process. Smallest independent task withing a process is called thread.
+		Thread is a unit of execution within a process.
+		Threads can share data in the heap, but the stack data is different for each thread.
+
+Multithreading Code:
+		Identify the work needs to be done concurrently.
+		Make the new class implement runnable
+		Overrride the run method
+		Logic of concurrent work should be written in run method.
+		From main method create an object of this class and using thread create a thread using the object and start the thread.
+
+
+Sequential: When program runs on single thread, then each method runs sequentally one after another.
+Concurrent: Multiple thread runs simultaneously, CPU do the context switch between multiple threads and runs the multiple threads simultaneously.
+			In reality CPU runs a single thread at a time, but this happens so fast that it seems like multiple threads are running simultaneously.
+Parallel: Multiple threads run simultaneously in multi core cpu, and that is called as parallel.
+
+
+Thread VS Process:
+1. Sharing data across processes is difficult, it is done via IPC(Interprocess communication) which is slow and difficult, Threads can share data via Heap.
+
+
+Executor Services:
+
+	Problem1. When we create multiple numbers of threads, then a single class have the reposibility of creating threads and assigning tasks to
+			  those threads. Which will violate SRP principle.
+	Problem2. When there are multiple number of threads, then most of the time will be used by system in context switching, which will reduce
+			  the performance and will not be the good use of resource.
+
+Solution: Executor service has waiting queue, All the jobs given to an executor service are added in the waiting queue.
+		  It also has the thread pool, where in, it creates a perticular number of threads initially(collection of threads),
+		  each thread from thread pool will take a task from waiting queue and start executing them. Whenever a thread complete the given task, executer service will pick the next task from waiting queue and assing it to that thread.
+
+	After this client will only create jobs and executer service will assign this job to the threads, so the SRP violation will be solved.
+
+	It will also reduce the context switch as the number of threads are reduced by executor service, where in it will create the number of thread on proportion to the number of cores avaialble in the cpu.
+
+
+Returning value from thread:
+	Callable interface : If we have to define a job which will run on seperate thread, and also return a value to the main htread, for this callable interface is used.
+
+	It is of generic(can be of any data type ie int/string/objects) type. It has a call method, and the logic of job should be inside call method.
+	Values return by call method is return by Future.
+
+Adder Substracter Problem:
+		If multiple threads are trying to share the same variable or working on same data then the variable data become unpredictable.
+		Mainly when threads excecute concurrently then the shared variable value are not directly stored on the ram, instead it do the operation in pc register and stores the address of next instruction along with data counter in copy of registers, and context switch happens. so for different threads value of same variable in their copy of register might be different that the value in ram ie. heap, hence this causes unpredictabilty
+
+	Condition that can lead to this synchronization problems:
+		1. Multiple threads sharing same data. Critical section - Peice of code working on shared data
+		2. Race Condition - Multiple threads are trying and succeding in entering their critical section at same time.
+		3. Pre-emption happens when a thread is executing its critical section and other thread got an opportunity. (Cpu stops a thread while it was performing in its critical section and started the other thread basically doing the context switching)
+
+Solution:
+	1. Mutex Locks: Produces mutual exclusion between competting threads. Basically ytake the lock of the crtical session at start of critical section such that other threads will not be able to use that critical section once the first thread is finished, then it will unlock then that critical section will be available for the other threads.
+
+	It uses Lock Interface and Reinterant lock class which have loack and unlock method, which beasically lock and unlock the block of a program.
+Note: Only lock the small parts of codes.
+
+	2. Synchronized Block: it is basically a syntactical sugar to do the same as mutex lock. Internally it also uses the same mutex lock to lock and unlock the critical section of the program. It takes the shared data in the argument.
+
+	3. Synchronized method: Just make the method synchronized. If a method is made synchronized then it will stop multiple threads to execute codes inside the method simultaneously. If the class is going to be used by multithreaded application and it is a critical section of code then the methods inside the class are made synchornized.
+
+	IMP. Only one thread can enter any of the synchornized method on the same object at the same time.
+
+	4. Concurrent Data Structures: 1. String Buffer is thread safe.
+								   2. Hash table is thread safe.
+								   3. concurrentHashMap is better than even hashtable, It supports neccessary synchronization and not blanket synchronization. It only locks the necessary buckets which needs to be updated instead of taking lock on whole data.
+								   Hence it has better performance than hash table. It uses synchronized block instead of synchronized method.
+
+	5. Atomic DataTypes:  If we use Atomic integer then they by default thread safe. No need to use any other locs or synchronized keyword to make is thread safe.
+
+Producer Consumer Problem:
+	If there is a store and producer are adding the product and consumers are buying the product. Lets say there are 5 spaces where producers can add their product and consumer can buy those products.
+	No of producers allowed in the store should be equal to number of empty spaces available and number of consumers allowed inside the store is number of filled spaces available.
+
+	if we use lock/synchronized block then only one consumer or only one poducer will be allowed inside the store, which will not solve the problem.
+
+	Semaphores will be used to solve this problem. which will allow the multiple threads to enter the store concurrently.
+
+Semaphores: It is a class whose object is created using new keyword and in constructor number of cuncurrent threads allowed inside the critical section is provided.
+	Semaphore semaphore =  new Semaphore(x); // x --> No of concurrent threads allowed.
+
+	semaphore.aquire() --> reduces the num of thread allowed inside the critical section by 1. if val is zero it blocks.
+	semaphore.release() -> increases the num of allowed thread.
+
+	Using above methods allow only the require numbers of consumer and producers inside the store, so we use ps.aquire and cs.rlease in producers run, cs.aquire and ps.release in consumer's run. [cs - consumersemaphore ps - producersemaphore]
+
+Strings: Non premitives data type. When string is created using string literal, then is directly creates a string in string constant pool/inter pool.
+		before creating it first checks if that string is already available or not, if available then just points to teh same string else creates a new string.
+
+		While creating with new keyword, it creates an object in heap but that stores the address of same string which is available in the constant pool.
+
+
+		This process is called interning. It is done in java to just save the memory.
+
+Q. What are implications of interning?
+Ans. equal should not be used to compare the strings, because they will produce undesired result, instead equals method should be used.
+	 equal operator only checks the stack(reference valeu ie address) but not checks the heap/ content. it is shallow check.
+	 is the string is created using literal and new keyword then both have same value but both the references will have different address hence equal operator will produce false although both the strings are same.
+
+	 equals method compares the actual content of the string, but this can be time consuming, hence it optimizes by first tries to compare the address.
+	 Then checks for the sizes of both the string if they are not equal return false, if equal compares the actual content of the string.
+
+	 Original string can not be changed, instead if any modification is done on the existing string then it will create a new string and return that  new string.
+
+     Due to immutability strings operations are slow but they are thread safe.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

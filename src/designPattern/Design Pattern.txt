@@ -1,0 +1,261 @@
+Introduction to design patterns:
+    Commonly encountered design problems in software development with well established solutions.
+    Design patterns are not a finished design that can be transformed directly into code. They are a description or template for how
+    to solve a problem.
+
+Types Of Design Patterns:
+1. Creational Design Pattern:
+    This design pattern as all about creation of objects. How many to create and how to create.
+    1.1 Singleton Design Pattern:
+        This design pattern is used to create only one instance of a class. This is useful when we want to create only one instance of a class
+        and use it across the application. For example, we can use this design pattern to create a logger class and use it across the application.
+        This design pattern is used in Spring Framework to create only one instance of a class and use it across the application.
+        This design pattern is used in Java Runtime Environment to create only one instance of a class and use it across the application.
+        This design pattern is used in Database Connection Pooling to create only one instance of a class and use it across the application.
+        This design pattern is used in Caching to create only one instance of a class and use it across the application.
+    1.2 Builder Design Pattern:
+        This design pattern is used to create complex objects. This design pattern is used when we want to create an object with many attributes.
+    1.3 Factory Design Pattern:
+        This design pattern is used to create objects without exposing the creation logic to the client and refer to newly created object using
+        a common interface.
+    1.4 Abstract Factory Design Pattern:
+        This design pattern is used to create a factory of related objects without exposing the creation logic to the client and refer to newly
+        created object using a common interface.
+    1.5 Prototype Design Pattern:
+        This design pattern is used to create a clone of an existing object.
+
+2. Structural Design Pattern:
+    These design patterns bother about how to structure a class, what and how many attributes to have and how to provide relationships between them by observing the data and problem.
+    This design pattern is all about class and object composition. This design pattern is used to form a large object from small objects.
+    2.1 Adapter Design Pattern:
+        This design pattern is used to make two incompatible interfaces compatible without changing their existing code.
+    2.2 Bridge Design Pattern:
+        This design pattern is used to decouple an abstraction from its implementation so that the two can vary independently.
+    2.3 Composite Design Pattern:
+        This design pattern is used to compose objects into tree structure to represent part-whole hierarchies. This design pattern is used to
+        treat a group of objects in similar way as a single object.
+    2.4 Decorator Design Pattern:
+        This design pattern is used to add additional functionality to an existing object without changing its structure.
+    2.5 Facade Design Pattern:
+        This design pattern is used to provide a unified interface to a set of interfaces in a subsystem. This design pattern defines a higher
+        level interface that makes the subsystem easier to use.
+    2.6 Flyweight Design Pattern:
+        This design pattern is used to reduce the number of objects created and to decrease memory footprint and increase performance.
+    2.7 Proxy Design Pattern:
+        This design pattern is used to provide a placeholder for another object to control access to it.
+
+3. Behavioral Design Pattern:
+    This design pattern is all about communication between objects. This design pattern is used to manage algorithms, relationships and responsibilities
+    between objects.
+    3.1 Chain Of Responsibility Design Pattern:
+        This design pattern is used to achieve loose coupling in software design where a request from the client is passed to a chain of objects
+        to process them. This design pattern is used in Exception Handling.
+    3.2 Command Design Pattern:
+        This design pattern is used to encapsulate a request as an object and pass it to an invoker object to perform an action.
+    3.3 Interpreter Design Pattern:
+        This design pattern is used to define a grammatical representation for a language and provides an interpreter to deal with this grammar.
+    3.4 Iterator Design Pattern:
+        This design pattern is used to provide a way to access the elements of an aggregate object sequentially without exposing its underlying
+        representation.
+    3.5 Mediator Design Pattern:
+        This design pattern is used to define an object that encapsulates how a set of objects interact. This design pattern promotes loose coupling
+        by keeping objects from referring to each other explicitly and it lets us vary their interaction independently.
+    3.6 Memento Design Pattern:
+        This design pattern is used to restore an object to its previous state.
+    3.7 Observer Design Pattern:
+        This design pattern is used to define a one-to-many dependency between objects so that when one object changes state, all its dependents
+        are notified and updated automatically.
+    3.8 State Design Pattern:
+        This design pattern is used to alter the behavior of an object when its internal state changes. This design pattern appears as if the object
+        changed its class.
+    3.9 Strategy Design Pattern:
+        This design pattern is used to define a family of algorithms, encapsulate each one of them and make them interchangeable. This design pattern
+        lets the algorithm vary independently from clients that use it.
+    3.10 Template Method Design Pattern:
+        This design pattern is used to define the skeleton of an algorithm in a method, deferring some steps to subclasses. This design pattern lets
+        subclasses redefine certain steps of an algorithm without changing the algorithm's structure.
+    3.11 Visitor Design Pattern:
+        This design pattern is used to define a new operation to a class without changing the class. This design pattern is used to add new operations
+        to an object structure.
+
+1. Singleton Design Pattern:
+    Used where client required to create only one instance of a class and share that across the application. [two purpose: only one object and shared]
+Why required:
+    Required because it is costly to create shared objects. For example, database connection objects. logger objects.
+    Creating a database instance is costly because, app server needs to connect with database server and create a tcp connection. and this same object will also be used by other clients. So, we can create only one instance of this object and share it across the application.
+
+How to implement:
+    1. Create a class with private constructor.
+    2. Create a static method to create an instance of the class and return thsi insatnce.
+    3. Create a static variable to hold the instance of the class.
+        Issue with above code is that it is not thread safe. If two threads try to access the getInstance() method at the same time,
+        then two instances of the class can be created due to race condition. Chances are that multiple threads can enter the
+        condition check of instance null and create multiple instances of the class.
+
+ solution:
+    1. Make the getInstance method synchronized, But this solution will reduce the performance. Some of the threads are waiting
+    meaninglessly(Even though they wouldn't have waited singleton would have been worked)
+    Once the instance ref has got the object(Instance has been created) then if other threads are waiting, they are waiting meaninglessly, even though they wouldn't have waited singleton would have been worked.
+    Once the instance is created waiting of the threads is performance degradation.
+    Threads that came at a time when instance was null, should be synchronized, so that only one thread was allowed inside the critical section. Threads that came after the instance was created, they only read the instance never updated/created, If they are not synchronized the singleton will still work and will be better for performance.
+
+    2. Instead of synchronizing the method use mutex locks. and only synchronize the threads which are coming at a time when instance is null.
+    and can be achieved by putting lock inside instance == null check and again check for instance == null inside the lock and then create the instance.
+    Outer null check will remove the need of synchronization for threads which are coming after the instance is created and stop those threads to wait meaninglessly.
+    Inner instance null check will stop multiple threads to create multiple instances of the class after going into race condition.
+    This is called double checked lock.
+
+2. Builder Design Pattern:
+    Used when we want to create an object with many attributes, and they should be set along with the validations on them.
+    For example, we want to create a student object with many attributes like name, age, address, phone, email, etc.
+    We can create a student object with all these attributes using a constructor with all these attributes as parameters.
+    But, this will make the constructor very complex and difficult to read and maintain. Also if a new attribute needs to be added,
+    then we need to change the constructor and all the places where the constructor is called. So it is violating the SRP and OCP.
+    we can use builder design pattern to create a student object with all these attributes.
+    We can create a student object with all these attributes using a builder class with all these attributes as parameters.
+    This will make the builder class very simple and easy to read and maintain.
+Implementation:
+    Create a static inner builder class inside the class for which we want to create an object.
+        [inner Builder class is made static so that can be accessed from the client without creating an instance of the class]
+    Make the constructor of class private. so that the object can not be created with new keyword pass builder object in parameter.
+        [Constructor is made private because we want to create the object using builder class only and not using new keyword.]
+    Create a static method get builder in the class to return the instance of the builder class.
+        [get builder is made static so that can be accessed from the client without creating an instance of the class]
+    Create a setter method for each attribute in the builder class and return the instance of the builder class.
+        [setter methods are made to return the instance of the builder class so that we can chain the setter methods]
+    Create a build method in the builder class to do the validation on attributes and return the instance of the class.
+        [build method is made to return the instance of the class so that we can create the object of the class using the
+        builder class and also do some validation on the attributes before creating the object of the class]
+
+3. Prototype Design Pattern:
+    Problem Statement: Given an object of a class, we want to create a clone/copy(new object with all the attributes having same value as that of existing
+    object) of that object.
+    This design pattern is used to create a clone of an existing object.
+
+Approach 1: We can just create a new copy object and copy all the attributes from existing object to new object.
+    But, this will make the code very complex and difficult to read and maintain.
+
+Cons:
+    1. If we have to create a clone of an object with many attributes, then it will make the code very complex and difficult to read and maintain. If number of attributes
+    are more, then there will be lengthy codes which increase the work of client.
+    2. While copying client will need to have complete detail of existing class including all the internal details of the class. This will violate the encapsulation.
+    3. Class might have few private attributes, which client won't be able to access.
+    4. In case of inheritance, before creating the copy of the object, we need to check the type of the object and then create the copy of the object. in future if the
+    original class hierarchy changes(like one more sub class is added) then we need to change the code to create the copy of the object. which will violate the OCP.
+
+Approach 2: Use Copy Constructor. Create a copy constructor in the class and pass the object of the class in the constructor.
+    But, this will make the code very complex and difficult to read and maintain.
+
+Cons: 1. In case of inheritance again we will need to check the instance of the original object then create the copy of the object. This will violate the OCP.
+         Also all the sub classes will need to have copy constructor implemented.
+      2. Also having the logic to create a copy on client side prone to error.
+
+Final Solution:
+    1. Create a copy method inside the class for which we want to create a copy. Inside that method create a new object of the class and copy all the attributes from
+    existing object to new object and return the new object.
+    2. All the sub class must override this copy method of the base class. Inside that method create a new object of the sub class and copy all the attributes from existing
+    object to new object and return the new object.
+    3. This can be achieved, by forcing these classes to implement an interface having copy method and then use that interface reference to create a copy of the object.
+
+Why this prototype needed?
+Ans. When we have to create large numbers of object of same class with having some common attributes, if we create these many numbers of objects using new keyword
+ from scratch and set all the attributes, then it will be very costly. So, we can create one object and then create the copy of that object and use it.
+ This will reduce the cost of creating the objects.
+
+ Definition: When we have use case, where objects vary only in very few attributes, we can create a prototype and all the other objects will be a copy of the prototype
+ with only few different attribute.
+
+4. Registry Design Pattern:
+   Registry is a place to store the prototype objects. Registry is a map of string and prototype object.
+   This design pattern is used to store the prototype objects in a registry and then use them to create the copy of the objects.
+   This should have methods like adding a new prototype and retrieve any prototype with its name.
+   Mehtods:
+   a) register(String key, Object)
+   b) get(String key)
+
+Application: Spring Container uses this design pattern to create the prototype objects.
+
+Steps:
+    1. The class for which we want to create a copy object, define a method clone () inside the class. This method will create the copy object and
+    return it. Every subclass must override the clone method of the base class.
+    2. Store the prototype in the registry at the start of the application.
+    3. Retrieve the prototype from the registry and create the copy of the object and then set the specific attributes.
+
+5. Factory Design Pattern:
+  Problem Statement:
+        If we are creating user service, we want to save users in data base, then we need to create an object of the data base, In this case Database is a
+        dependency of user class, if this database class is changed then we need to change the user class as well. This is violating the OCP. and also violating
+        DIP, where higher module (user service) is depending on lower module (database).
+        Instead of creating database class, we need to create data base as interface or abstract class, Because in future there might be a scenario where we need
+        to migrate the database from one to other (like oracle to postgres sql). All the other type of database classes will implement the methods of database interface.
+
+        Overridden method can have the return type same as parent or it can return any of the child class. So returning the child class object from the overridden is
+        called factory design pattern. Basically method inside the base class is working as a factory to create the object of the child class.
+
+        Purpose of factory method is to return the object of correspond class.
+
+  Main Interface Responsibilities:
+    + Containing the non factory methods and attributes
+    + Also containing all the factory methods tp return the objects of all the corresponding classes.
+    Hence it has got the multiple responsibilities. so SRP is getting violated. To solve this need to split this interface into different interfaces.
+    And that is called abstract factory.
+
+    So factory methods will be in one factory interface, non factory methods and attributes will be in non factory interface. But to join the factory interface to non factory interface
+    we will need to have a factory method inside the non factory method which will create the object of factory interface implementation classes.
+
+    It is a design pattern which creates the object of corresponding class based on the input parameter.
+
+--------Structural Design pattern----------------
+How to structure the code and classes/attributes.
+
+6. Adapter Design Pattern:
+ Problem Statement:
+    1. We might need to change the 3rd party service provider in future. eg. If Phone pay is using yes bank APi and it has tightly coupled with yes bank API and due to some
+    reason if the yes bank API goes down, then the phone pay needs to bring down its services as well. So, we need to decouple the phone pay from yes bank API. And also it is
+    violating Dependency Inversion principle and OCP
+ Adapter design pattern ensures that our application remains maintainable if we are using third party services.
+ Whenever we are using a third party service then never connect to them directly, instead connect via an interface.
+ First create an Interface with all the methods third party API is providing.
+ So we will have an interface and class implementing that interface between our application and third party service.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

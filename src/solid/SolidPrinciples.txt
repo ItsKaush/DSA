@@ -1,0 +1,101 @@
+Solid principles are guidelines which is used to design a java application and help engineers design better software.
+
+Features of a well design software:
++   It should be extensible1: Easy to add new features.
++   It should be maintainable : Easy to fix bugs.
++   It should be reusable:
++   It should be testable.
++   It should be loosely coupled.
++   It should be readable.
++   It should be scalable.
+
+SRP - Single Responsibility Principle:
++    A class should have one and only one reason to change, meaning that a class should have only one job.
++    Every code unit should have cleanly defined responsibility. Every code unit should have only one reason to change.
+     Popular code smells that indicate SRP violation:
+        +   God class: A class that does too many things.
+        +   Shotgun surgery: A change in one class requires changes in many other classes.
+        +   Monster method: A method that does too many things.
+        +   Repeatable codes: Same code repeated in many places or multiple if else statements.
+        +   Messy utility classes: Utility classes that have too many unrelated methods.
+     Solution:
+        +   Extract classes: Extract classes from god class.
+        +   Extract methods: Extract methods from monster method.
+        +   Extract interfaces: Extract interfaces from classes.
+        +   Extract packages.
+        +   Extract modules.
+        +   Extract microservices.
+
+OCP - Open Closed Principle:
++   Software entities should be open for extension, but closed for modification.
++   Open for extension: We should be able to add new features or components.
++   Closed for modification: We should not modify existing code.
+
+Why is it required?
++   To avoid breaking existing code, to avoid regression(Old functionality starts breaking when new features are added) errors.
+
+    + If we follow OCP then to add a new features, we dont modify old codes instead we extend th existing class and add our new code
+      to implement the new feature.
+Solution: Make a base class as interface and whenever a new feature is required, extend the interface and implement the new feature.
+    Abstract class is also a good option to implement OCP.
+    Inheritance and polymorphism is the key to implement OCP.
+    Composition is also a good option to implement OCP.
+
+LSP - Liskov Substitution Principle:
++   Objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program.
++   Don't advertise something that you can't do.
++   If you have a base class and a derived class, then the base class and derived class should be interchangeable without affecting
+    the functionality of the program.
++   Abstraction should not be out of sync with implementation. means if abstract class have some behaviour then all the classes which are
+    extending the abstract class should have the same behaviour. If any of the feature of abstract class is not available in the subclass
+    then it is a violation of LSP. Because the client is expecting the same behaviour from the subclass as it is in the abstract class.
+    And if someone is using the abstract class reference to call the method of subclass then it will not work as expected.
++   Child class should be able to substitute the parent class without breaking the code.
+
+Why is it required?
+Ans. Consistency and predictability.
+     Ease of maintainability.
+
+Solution: Use abstract class or interface to implement LSP.
+
+ISP - Interface Segregation Principle:
++   Clients should not be forced to depend upon interfaces that they do not use.
++   Many client specific interfaces are better than one general purpose interface.
++   Dont put too much into an interface, split into separate interfaces.
++   Keep Interfaces as small as possible.
++   Methods inside a interface should be cohesive i.e. they should be related to each other. If they are not related then they should be
+    in separate interfaces. Because if they are not related then the client will not use all the methods of the interface and it will
+    violate ISP.
+
+Why it is needed?
+Ans. To avoid fat interfaces.
+     To avoid unnecessary dependencies.
+
+Solution: Use multiple interfaces instead of one general purpose interface.
+
+DIP - Dependency Inversion Principle:
++   High level modules should not depend upon low level modules. Both should depend upon abstractions.
++   Abstractions should not depend upon details. Details should depend upon abstractions.
++   High level modules are modules which provide the business logic. Low level modules are modules which provide the implementation details.
++   High level modules should decide the dependency and not the low level modules. Because if low level modules decide the dependency
+    then it will be difficult to change the dependency in future. Low level modules should be depending on the dependency provided by the
+    high level modules.
+
+Inversion of control: Instead of creating objects in the class, we pass the object as a parameter to the class. This is called inversion of control.
+
+Solution: Inject the dependency in low level module through parameter and inject the dependency from high level module.
+
+Dependency Injections:
++   Constructor injection: Inject the dependency through constructor. Through this method dependency will be injected at the time of
+    object creation. And can not be switched without creating a new object.
++   Setter injection: Inject the dependency through setter method. Dependency can be switched at any time. But the object will be in
+    inconsistent state until the dependency is injected.
+
+
+
+
+
+
+
+
+

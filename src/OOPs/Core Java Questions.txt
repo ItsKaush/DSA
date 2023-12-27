@@ -1,0 +1,397 @@
+Q1. What is java?
+Ans: Java is a high level, Object oriented, platform independent, Rhobust, High performance, secure and Multithreded programming
+	language.
+
+Q2. What are the differences between C++ and Java?
+Ans: 1. c++ is mainly used for system programming where as java is used for application programming.
+	 2. c++ supports pointers where as Poiters are there internally in java but it doesnot allow developers to use pointers.
+	 3. c++ has compiler only where as java has compilers as well as interpreters, which enables it to be platform independent
+	 4. c++ supports miltiple inheritence where as java doesnot support multiple inheritence.
+	 5. c++ supports operator overloading, java doesnot.
+	 6. c++ suports call by value and call by reference where as java only suports call by value.
+	 7. c++ does not have built in support for threads, it depends on external libraries for it, where as java has build in support for thread.
+	 8. c++ does not support signed right shift operator java does.
+
+Q3. What are the features of java?
+Ans. 1. Simple: it is easy to learn, simple syntax.
+	 2. Portable: it is once compiled can be run on any machine which has JDK installed on it. it converts the programm into
+	 byte code and then it can by run on any machine, so write once and run on any machine.
+	 3. Platfrom independent: it comes with its own compiler and interpreter, so once it is compiled and converted into byte code
+	 can be run on any machine which has java installed on it. so the interpreter converts that byte code into source code. hence doesnot depend on the machine or system.
+	 4. Robust: it is rhobust as it uses strong memory management and exception handeling, concepts like automatic
+	 garbage collection.
+	 5. Architecture neutral: it does not depend on architecture for the size of data type, as in C++ the size of data
+	 may vary according to the operating system architecture.
+	 6. High Performance: It is faster than the tradition interpreted language as its byte code is closer to native language.
+	 but bit slower than other compiled language.
+	 7. Secure: it is secure as it does not support explicit pointers  and also converts the source code into byte code.
+	 8. Multithreaded: It supports multithreading which allows the program to execute different tasks simultaneously using
+		multiple threads. and also each thread does not occupy the memory separetly.
+
+Q4. What is JVM?
+Ans. Java virtual machine is a virtual machine which enables the system to run the java programme. JVM is a specification which must be
+	implemented on the computer. It compiles the java program into byte code which can be run on any machine.
+
+Q5. What is the difference between JRE, JVM and JDK?
+ans. JVM: it is specification which implementation is know as JRE. it is virtual machine which helps executing the java programmes.
+		Its implementation is provided by Oracle and other companies. When a java program is run a instance of JVM is created. basically it
+		provides run time environment for running the java programme.
+	JRE: it is implementation of JVM, which is physically present on the computer, it provides the Implementation of JVM
+		along with other libraries which helps JVM run the java Code.
+	JDK: it is a development kit which physically exists on the computer which provides the JRE and other development tools to help
+		develop java application.
+
+Q6. How many types of memory areas are allocated by JVM?
+Ans: 1. Class area: Allocate the memory for class structure like code, fields and method data.
+	 2. Heap area: stores objects.
+	 3. Stack area: stores local variable and method call and return basically the frames.
+	 4. PC register: store the address of current instruction being executed by JVM.
+	 5. Native Method stack: store all the native methods used.
+
+Q7. What is just in time compiler (JIT Compiler)?
+Ans. It is Just In Time Compiler which optimize by compiling the parts of byte code which has similar functionality at
+	same time. Which improves the performance.
+
+Q8. What is class Loader?
+Ans. It is a sub system of JVM, which loads the class files whenever a java program is run.
+		it has following components:
+		1. Bootstrap class loaded: it is the superclass of extension class Loader, which loads .jar file containing all the
+		classes from java standard edition like, java.lang, java.sql, java.io, java.net.
+		2. Extension class loader. it is the child class of bootstrap class loader and responsible for loading the external directory.
+		3. Application class loader: responsible for loading the classes at the current class path or directory.
+
+Q9. If I don't provide any arguments on the command line, then what will the value stored in the String array passed into the 		main() method, empty or NULL?
+Ans. It is empty, but not null
+
+Q10 What if I write static public void instead of public static void?
+Ans. The program compiles and runs correctly because the order of specifiers doesn't matter in Java.
+
+Q11. What is the default values of local variable?
+Ans. Local variables are not initialized to any default values.
+
+Q12. What are the various access specifiers in java?
+Ans. Public --> accessed from anywhere
+	 Protected --> accessed within the package and the subclass of other package
+	 default --> accessed inside the package only
+	 Private --> accessed within the class only
+
+
+
+---------------------------------------OBJECT ORIENTED PROGRAMMING--------------------------------------------
+
+It is a programming paradigm where the application is written in terms of objects same as the real world objects which are having
+attributes and behaviour associated with them.
+
+These programming paradigm helps increase modularity, readability and reusability.
+
+Advantages:
+	-> Include concepts like encaptulation and abstraction which hides the complexity from user and only shows functionality.
+	-> Implement real time approach like inheritance, abstraction and polymorphism.
+	-> increase modularity and readability.
+
+Q13. What is an object?
+Ans. In java object is an instance of a class, having state and behaviour as like a real world object. Attributes are the state and methods are the behaviour. Using this objects only the attributes and methods can be accessed.
+
+Q14. What are the differences between object oriented and object based programming languages?
+Ans. Object oriented programming languages follow all the concept of OOPS where as object base programming language does not follow all the concepts of OOPs like inheritance and polymorphism. Object oriented programming languages does not have inbuild objects where as other one has inbuild objects. like java script has window object. example of object based programming languages are java script and  VBScript.
+
+Q15. What are the different types of constructors in java?
+Ans. Default constructor and parametrized constructors.
+
+Q16. Does constructors return any value?
+Ans. Constructor returns the current instance of the class, however no return type is specified explicitly.
+
+Q17. What are restrictions on static method?
+Ans. They can not call the non static method and can not access the non static data members. and this and super can be used with static methods. Static methods can not be override.
+
+Q18. Can we make abstract method static?
+Ans. If we make abstract method static then these methods can be called without creating an object which does not make any sense because abstract method does not contain implementation only the method signature. Hence it gives compile time error.
+
+Q19. Can constructor be made static?
+Ans. No, because it is used to instantiate the object states, where is static refers to class label.
+
+Q20. What are the uses of this keyword?
+Ans. It is an object reference which refers to the current object of the class.
+		It basically points to the current objects state and behaviour.
+		This can be used as a return type and can be passed as an argument in the methods and constructor, where it will basically contains the current object reference(basically passing and returning the current class object).
+
+Q21. Can we assign the reference to this variable?
+Ans. No, this variable by default contains the current object, so if we try to do so, it will give compile time error.
+
+Q22. What is inheritance in java?
+Ans. Inheritance in java is one object can aquire the properties of another existing object, just like real world inheritance.
+	It helps create new classes on top of existing class which will have all the states and behaviour of existing class and additionally it can also have additional states and methods inside it. In java it is mostly used for code reusability and method overriding.
+	different types of inheritance are:
+		1. single level inheritance
+		2. multilevel inheritance
+		3. multiple Inheritance --> not allowed in java.
+		4. hybrid inheritance --> Not supported in Java
+		5. hierarchichal Inheritance
+
+
+Q23. Which class is super class of all the classes?
+Ans. Object class
+
+Q25. What is aggregation in java?
+Ans. Containing a reference of one class in other class is called aggregation. like employee has address along with all other attributes, so here address is already an object including various attributes, this kind of relationship is called aggregation.
+
+Q26. What is composition in java?
+Ans. Composition is a type of aggregation but with strong relationship, like aggregated class can not exists without container class. like class and student.
+
+Q27. What is super keyword and its uses?
+Ans. Super keyword is a reference variable which stores the reference to immediate parent class object and it is created implicitly at the time of creating the object of subclass by java. it is used to refer to the immediate parent attributes and methods. it is used to call the immediate parent methods and constructors.
+
+Q28. Can this and super both be used in a constructor?
+Ans. No, because this and super has to be the first statement inside the constructor.
+
+Q29. What is method overloading in Java?
+Ans. Method overloading in java enables using methods with same name but different number of arguments and data types. which improves readability of the code. This can be achieved by changing the number of arguments or changing the data type of arguments. It also called as compile time polymorphism.
+
+Q30. What is method overloading with type promotion?
+Ans. Method overloading with type promotion means one data type can be implicitly promoted to other data type if no match is found.
+
+Note: Overridden method can not be more restrictive than the method inside the parent class. If the method inside the parent class is protected and if we make the overridden method in child class as default or private then it will give the compile time error. If allowed it violates the LISKOV Substitution solid principle. when subclass is extending from super class, super class is providing a contract with access modifier in the method signature, so the child class should also widen that contract not to narrow it down. (Need to read more on this)
+
+Q31. Can we override the private method?
+Ans. No, as the scope of private method is limited to the same class only.
+
+Q32. Can we modify the throws clause of superclass method while overriding it in subclass?
+Ans. Yes it can be modified. But there are two rules to do it.
+		1. If the super class method does not throw an exception then subclass overridden method can not throw checked exception but can throw/define unchecked exception.
+		2. If superclass method defines an exception then sub class overridden method can define the same, subclass exception or no exception but not the parent class exception.
+
+Q33. What is the final variable?
+Ans. Final keyword prevent value of a variable to update, once a value is assigned, it will never change.
+	Other uses:
+		1. stop value change  - variable
+		2. stop method overriding - Method
+		3. stop inheritance -class
+
+Q34. What is the final blank variable?
+Ans. A variable which has not been assigned any value (Not initialized at the time of declaration) is called final blank variable. It can only be initialize using class constructor. eg. Pan Number
+If it is static final then can only initialized inside a static block.
+
+Q35. Can we declare a constructor as final?
+Ans. No, because it is never inherited.
+
+Q36. What is the difference between final method and abstract method?
+Ans. Main difference is that abstract method can be made final, as their implementation is provided by other class method who implement it. hence if the abstract method is made final then it can not be overridden.
+
+Q37. What is Polymorphism?
+Ans. Polymorphism is a fundamental concept in object-oriented programming (OOP) that allows objects of different types to be treated as objects of a common type. It provides a way for different classes to be used interchangeably based on a shared interface or common ancestor.
+Polymorphism allows for code flexibility, extensibility, and reusability. It enables a single interface to represent various types of objects, making the code more adaptable to changes and easier to maintain. The ability to treat objects of different types through a common interface is a powerful feature of object-oriented programming languages.
+
+Q38. Difference between run time polymorphism(Dynamic Binding, late Binding, Dynamic Method dispatch) and compile time polymorphism(Early binding, static binding).
+Ans.
+
+Q39. What is abstraction?
+Ans. Abstraction in java a way to hides the implementation details from the user only expose the functionality. It is achieved in java by abstract classes and interfaces.
+
+Q40. What is a abstract class?
+Ans. An abstract class in java is a way to achieve complete or partial abstraction. it is declared with abstract keyword. It needs to be extended and its method m=implemented.
+	-> Abstract classes can have abstract or non abstract methods and constructors.
+	-> It can not be instantiated (Object of this class can not be created)
+	-> It can have static methods and constructors also.
+	-> It can also have final methods, which will not allow the subclass to override this final method.
+	-> If there is a abstract method in a class that class must be abstract.
+	-> If a class is extending an abstract class which has abstract method then this class which is extending must provide the implementation of the super class method or make itself abstract.
+
+Q41. What is interface?
+Ans. Interface in java provides a way to achieve complete abstraction. It can have only method signature not the body, classes which will implement the interface will provide the implementation of the methods by overridding it. It also enables to achieve or implement multiple inheritence in java. It can have data members and method signature only. It can not be instantiated. Since java 8 we can have default and static methods inside interfaces and after java 9 we can have private methods inside interfaces.
+It also helps to achieve the loose coupling, which makes the code to be more adaptable to changes and flexible.
+
+It basically provides a contract where class with obey this contract needs to provide their own implementation to methods iside the interface.
+All the methods inside the interface are abstract by default and data members are public static final.
+An interface will extends another interface and class will implement the interface.
+A class can implements multiple interface.
+
+After java 8 interfaces methods can have body but they need to be marked as default or static.
+
+Q42. Can the interface be final?
+Ans. No, because they needs to be implemented.
+
+Q43. How to make a read only class in java?
+Ans. to have only getters in the class.
+
+Q44. What are the advantages of encaptulation?
+Ans. Encaptulation basically encapsules/assemble the all related data members and attributes together, which improves security.
+It provides the more control over data member, like can have validations on the data members, and also as the data members are made private they can not be accessed from outside the class and manipulated directly and also provides the data hiding from outside the world.
+
+Q45. What are the different types of exceptions in Java?
+Ans. Checked/compile time exception
+	 Unchecked/Run time exception
+
+Q46. Java Exception hierarchy.
+Ans. Throwable is the base class.
+
+Q47. Can we have multiple catch block in exception handling.
+Ans. yes, but the condition is that, subclass exception should be catch before catching the base class. It will throw a compile time exception that exception has already been caught. In case of custom exception if a method is throwing multiple exception then will need to catch the multiple exceptions.
+
+Q48. What is finally block?
+Ans. Finally block in java tells that, all the codes written inside the finally block will be executed no matter exception is caught or not. One try can have multiple catch block but only one finally block. It basically contains the clean code or connection closing code, although exception happens this finally block will get executed.
+
+Q49. Difference between throw and throws.
+Ans. Throw keyword is used to throw an exception where as throws keyword is used to declare an exception.
+	 Throw keyword is followed by an instance and throws keyword is followed by a class.
+	 Throw keyword can only be used once, because multiple exception can not be thrown, where as multiple exceptions can be declared using throws keyword.
+	 Throw keyword is used inside the method body and throws keyword is used with the method signature.
+
+Q50. What kinds of object can be thrown as exceptions.
+Ans. Only the object of throwable type, primitive or non primitive other types of object can not be thrown.
+
+Q51. What are the ways to create a string in java?
+Ans Literal -> String s = "Example" Example is stored inside the String constant pool (Special area inside the heap memory to store the string) If we create a new string with String s1 = "Example", JVM will chek if the string already present inside the constant pool or not, if present it will not create a new one and return the reference of the same string. this is called inturning.
+
+	New Keyword: Strong s = new String("Welcome") here jvm will create a new object in normal heap and store the reference of string from the constant pool.
+
+Q52. Why strings are immutable in java?
+Ans. Because of inturning, multiple references can be pointing to the same string, if the mutability is allowed then it will create ambiguity.
+
+Q53. How the mutability can be achieved in java?
+Ans. using string buffer or string builder.
+
+Q54. what is the difference between string buffer and string builder?
+Ans. String buffers are thread safe, because they are synchronized, where string builder is not thread safe. String buffers are slow string builder is comparatively faster.
+
+Q55. What is the nested class?
+Ans. Nested class is basically class inside other class. it helps achieve group together all the related classes and interfaces, which improves the readability. Important property of nested class is that it can access all the data members or methods of outer class even if they are private. There are two types of nested class- static nested class or non-static nested class/inner class.
+
+Q55. What is the difference between nested class and inner class?
+Ans. An inner class is a part of nested class. Non-static nested classes are known as inner class.
+
+Q56. What are the types on nested classes?
+Ans. Static nested class and non static nested class.
+	non static nested class -> 1. Member nested class - A class created withing a class and outside the method
+							   2. Anonymous nested class - A class created for implementing an interface or extending a class
+							   3. Local inner class - A class created within a methods
+
+Q57. Explain the member inner class.
+Ans. Member inner class is a normal class within other class. It can access the private data members of outer class.
+	To create the object of the class need to use the object reference of outer class with new and constructor of inner class.
+	like outerclass.innerclass innerclassobjref = outerclassobjref.new innerclassconstructor();
+
+Q58. What is the anonymous inner class?
+Ans. Anonymous inner class is basically used to provide the implementation of abstract method or method inside an interface while creating the object of interface or abstract class. It is basically a class without a name, Name is decided by the JVM.
+
+Q59. What is local inner class?
+Ans. Local inner class is class which is defined inside a method. These classes have scope withing the method block, hence access specifier is not required. They need to be instantiated withing the method only.
+
+Q60. Static Nested classes.
+Ans. A nested class created inside a class is called static nested class. These classes can not access the non static data members and non static methods of outer class. can only access the static data members of outer class.
+Need to create the object of these static inner classes if they contain the non static methods or data members else can be referenced using the class name only.
+
+Q61. What are nested interfaces?
+Ans. Nested Interfaces are basically interface within a class of interface. If an interface is created inside an interface then it must be public, if created is inside a class then it can have any access modifier. Nested interfaces can't be accessed directly, they need to be accessed via the outer class or interface. Nested Interfaces by default declared static. Nested Interfaces are basically used to group together all the related interfaces and classes.
+
+Q62. What is Multitasking?
+Ans. Multitasking is nothing but performing multiple tasks simultaneously. It is achieved by multiprocessing or multithreading.
+	Multiprocessing is nothing but performing multiple processes simultaneously, like our OS does.
+	Multithreading is nothing but performing multiple different small tasks inside a single program simultaneously.
+
+Q63. What are the differences between process and threads.
+Ans.-> Process is a program which is executing, Thread is a small task within a program.
+	-> process is heavy weight, thread is light weight.
+	-> Context switching between the process is time consuming where in task it takes less time
+	-> process requires more memory, threads require less memory.
+	-> processes does not require synchronization, threads require synchronization.
+	-> Processes do not depends on each other, where as threads depend on each other.
+	-> Processes consume more resources, threads consumes less resources.
+
+Q64. Explain the life cycle of a thread.
+Ans . -> new - when a thread is created, it is in born state or new state.
+	  -> Runnable - Once a thread is created it is ready to run if the resource is provided by the scheduler.
+	  -> Running - Once it gets the resource thread is in running state.
+	  -> Dead -> Once a thread started running and complete its task, it goes into dead state and releases the resource it was utilizing.
+	  -> Non Runnable state - After running a thread can go into non runnable state as well like sleep, join, waiting.
+
+Q65. How threads are created?
+Ans Threads are created using two ways:-
+		Extending Thread class
+		Implementing Runnable Interface
+	Runnable interface has a single method with run name.
+	Thread class provides a lot of methods and constructor. run method of thread class override the run method of Runnable interface, so internally Thread class implements Runnable interface.
+
+	Creating thread using extending a thread class is not possible if the class is already inheriting another class, because multiple inheritance is not supported in java. So better to create a thread using Runnable interface because a class can implements multiple interfaces.
+
+	When creating thread implementing Runnable interface, need to create a object of thread class and pass the reference of class with has overridden the run method in the thread class constructor.
+
+Q66. Thread class method and constructors.
+Ans. Constructors:- 1. Thread().
+					2. Thread(Runnable target)
+					3. Thread(String ThreadName)
+					4. Thread(Runnable target, String ThreadName)
+					5. Thread(ThreadGroup tg, Runnable target)
+					6. Thread(ThreadGroup tg, String ThreadName)
+					7. Thread(ThreadGroup tg, Runnable target, String ThreadName)
+					8. Thread(ThreadGroup tg, Runnable target, String ThreadName, Long stackSize)
+	Methods:-
+			Basic Maethods:
+				1. run() - override the run method of runnable interface (definition of the task)
+				2. start() - To call the run method
+				3. static currentThread() - return current thread reference
+				4. isAlive() - return boolean false when thread is dead.
+				5. getName()
+				6. setName
+			Daemon thread methods:
+				1. isDaemon() - returns booean
+				2. setDaemon(boolean b) - yes - set.   no - doesnot set
+			Priority based Methods:
+				1. getPriority().
+				2. setPriority(int priority)- priority from 1 to 10
+			Execution prevent Methods:
+				1. sleep()
+				2. yield()
+				3. join()
+			Interrution Method
+				1. interrupt()
+				2. isInterrupted()
+				3. interrupted()
+			InterThreadCommunication Method --> Not in thread class, available in object class
+				1. wait()
+				2. notify()
+				3. notifyAll()
+
+Q67. What are Daemon thread?
+Ans. Threads which run in background of another thread and provide service to the user threads. eg. Garbage collector, finalize,
+Attach listener, signal dispatch.
+In the background of main thread always this garbage collector thread works in background, so in the scenario if there is any memory issue for main thread, then this garbage collector thread release some memory by releasing the memory from objects which are not being referred.
+Any thread can be set as demon before it started, if tried to set daemon after getting started then it throw an IllegalStateException. Main thread can not be set as daemon thread, because it get started internally from JVM.
+If main thread is not doing anything and a created thread is set to daemon then it will not do anything, because it will not have any thread to provide service.
+Life of daemon thread depends on the thread to which it is providing the service, if the main thread is dead daemon thread will also be dead.
+It inherits the properties of parent thread to which it is providing the service.
+
+Q68. What is the thread priority in java?
+Ans. If we have multiple threads in runnable state, then we can provide priority to the each thread and on basis of higher priority JVM allocates the processor for the thread to execute.
+It is represented as integer from 1 to 10. 10 being the highest and 1 being the lowest.
+Also three constant enums provided by the java, but internally they contains the integer values only.
+Priority of a thread is inherited from its parent thread unless it is explicitly set.
+Priority of main thread is 5 by default.
+	MIN_PRIORITY - 1
+	NORM_PRIORITY - 5
+	MAX_PRIORITY - 10
+
+Q69. What is sleep method in java?
+Ans. Sleep method in java basically used to sleep a thread momentarily. Where it stops executing and once the sleep period is over again it starts executing from where it has stopped.
+ There are two type of sleep methods:
+  1. static native void sleep (long millisecond) throws exception interruptedException
+	2. static void sleep (long millisecond, long nanosecond) throws exception interruptedException
+
+Q70. What is yield Method?
+Ans. Yield method in java is used to pause the execution of current thread to give the chance to other threads of same priority or higher priority.
+If there is no thread of same priority then the same thread will continue its execution.
+
+Till java 5 yield method used to use sleep method internally, but after java 5 it uses wait method internally where thread provides hint to
+hint to the scheduler that it is ready to pause its execution, so that other threads can get the chance to execute. it depends on the scheduler to accept
+the hint or keep the current execution.
+
+method. public static native void yield().
+
+Q71. What is join method in java?
+Ans. Join method in java is used to pause the execution of current thread until the specified thread is dead.
+     If a thread wants to wait for another thread to complete its task then it can use join method.
+  Methods:
+     1. public final void join() throws InterruptedException
+     2. public final void join(long millis) throws InterruptedException
+     3. public final void join(long millis, int nanos) throws InterruptedException
+
+

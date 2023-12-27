@@ -1,5 +1,7 @@
 package OOPs.Interfaces;
 
+import java.util.Arrays;
+
 public class Car implements Comparable<Car>{
 
     int price;
@@ -40,6 +42,17 @@ public class Car implements Comparable<Car>{
 
     @Override
     public int compareTo(Car obj) {
-        return obj.price -this.price ;
+        return     this.price - obj.price;
+    }
+
+    public static void main(String[] args) {
+        Car[] cars = new Car[3];
+        cars[0] = new Car(100, 200);
+        cars[1] = new Car(200, 100);
+        cars[2] = new Car(300, 50);
+
+        Arrays.sort(cars);
+        System.out.println(Arrays.toString(cars));
+
     }
 }
